@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		093575BA746A6C8A6A902ED9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED9B6AD35749A9D4184203D /* WebKit.framework */; };
+		099D82AB13700CD16D3B910B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115AA5C107047EFB1191709B /* Assets.xcassets */; };
+		2316CDFEF84A85F42C493879 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF15F8B06022F60D8B2687F /* UIKit.framework */; };
+		35DFEAB54A285093149C1893 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8861773107CEEE3AA80F6158 /* CoreGraphics.framework */; };
+		4AE20E0262DAA228AE5FCBE5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4E532AD6C29806C653F7F /* Security.framework */; };
+		66FB3D1AA5DAD689B7AE4FAA /* libapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD12FEF31C29CD3F9886C5F8 /* libapp.a */; };
+		735E947C5395CEB9D0816AB2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305720ADB0810751B01BE6F4 /* QuartzCore.framework */; };
+		9EFA004374BA079196A96280 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F64BBD064777D30334DDC7 /* MetalKit.framework */; };
+		AE6E0738E94D584E1CCB1CE3 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 20D25B2DC072421D848EA4C5 /* assets */; };
+		B9C7225330B98EDFF1528CF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCB87A315859F73C356945A /* LaunchScreen.storyboard */; };
+		CF97F760451301BD432DD00C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7085E9A13C8703C2DAD68E26 /* main.mm */; };
+		DF673DADEC1D82C86AF4C9BE /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA5BBB2FCC1E38AFBECB5E2 /* Metal.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00B4E532AD6C29806C653F7F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		115AA5C107047EFB1191709B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1ED9B6AD35749A9D4184203D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		20D25B2DC072421D848EA4C5 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
+		2BA5BBB2FCC1E38AFBECB5E2 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		305720ADB0810751B01BE6F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		43A597FB65D865326974B586 /* zettel_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zettel_iOS.entitlements; sourceTree = "<group>"; };
+		47F64BBD064777D30334DDC7 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		5AF15F8B06022F60D8B2687F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6EAA5B92590D5568473587AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7085E9A13C8703C2DAD68E26 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		7DCB87A315859F73C356945A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		86047BFDC8F083618F545EE5 /* main.rs */ = {isa = PBXFileReference; path = main.rs; sourceTree = "<group>"; };
+		8861773107CEEE3AA80F6158 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AD12FEF31C29CD3F9886C5F8 /* libapp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libapp.a; sourceTree = "<group>"; };
+		B8BB208AC956A1198E80A3D3 /* lib.rs */ = {isa = PBXFileReference; path = lib.rs; sourceTree = "<group>"; };
+		BFA4E43F71365E0796AFF654 /* bindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bindings.h; sourceTree = "<group>"; };
+		C7A8B53A0A73CBD8EDDB1095 /* zettel_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = zettel_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		551B7CBF624D72A199C2743B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66FB3D1AA5DAD689B7AE4FAA /* libapp.a in Frameworks */,
+				35DFEAB54A285093149C1893 /* CoreGraphics.framework in Frameworks */,
+				DF673DADEC1D82C86AF4C9BE /* Metal.framework in Frameworks */,
+				9EFA004374BA079196A96280 /* MetalKit.framework in Frameworks */,
+				735E947C5395CEB9D0816AB2 /* QuartzCore.framework in Frameworks */,
+				4AE20E0262DAA228AE5FCBE5 /* Security.framework in Frameworks */,
+				2316CDFEF84A85F42C493879 /* UIKit.framework in Frameworks */,
+				093575BA746A6C8A6A902ED9 /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		726BF316688F3F7979181348 /* zettel */ = {
+			isa = PBXGroup;
+			children = (
+				7085E9A13C8703C2DAD68E26 /* main.mm */,
+				DF3FA64CB67D04155698D243 /* bindings */,
+			);
+			path = zettel;
+			sourceTree = "<group>";
+		};
+		8209DF8C947A746E31E7DCA6 /* zettel_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6EAA5B92590D5568473587AC /* Info.plist */,
+				43A597FB65D865326974B586 /* zettel_iOS.entitlements */,
+			);
+			path = zettel_iOS;
+			sourceTree = "<group>";
+		};
+		AFA749F92B429330DEF030CE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B8BB208AC956A1198E80A3D3 /* lib.rs */,
+				86047BFDC8F083618F545EE5 /* main.rs */,
+			);
+			name = src;
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+		B8CB1F1B4140CF19FFCEAD57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8861773107CEEE3AA80F6158 /* CoreGraphics.framework */,
+				AD12FEF31C29CD3F9886C5F8 /* libapp.a */,
+				2BA5BBB2FCC1E38AFBECB5E2 /* Metal.framework */,
+				47F64BBD064777D30334DDC7 /* MetalKit.framework */,
+				305720ADB0810751B01BE6F4 /* QuartzCore.framework */,
+				00B4E532AD6C29806C653F7F /* Security.framework */,
+				5AF15F8B06022F60D8B2687F /* UIKit.framework */,
+				1ED9B6AD35749A9D4184203D /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0821F2FE7171B78BC0E2B2F /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Externals;
+			sourceTree = "<group>";
+		};
+		D1A6FA9EEB6C62FD196DCF1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C7A8B53A0A73CBD8EDDB1095 /* zettel_iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF3FA64CB67D04155698D243 /* bindings */ = {
+			isa = PBXGroup;
+			children = (
+				BFA4E43F71365E0796AFF654 /* bindings.h */,
+			);
+			path = bindings;
+			sourceTree = "<group>";
+		};
+		F039C8BD6B0C55F10D860C3E = {
+			isa = PBXGroup;
+			children = (
+				20D25B2DC072421D848EA4C5 /* assets */,
+				115AA5C107047EFB1191709B /* Assets.xcassets */,
+				7DCB87A315859F73C356945A /* LaunchScreen.storyboard */,
+				D0821F2FE7171B78BC0E2B2F /* Externals */,
+				FB4AE9A0944EC425E294C97F /* Sources */,
+				AFA749F92B429330DEF030CE /* src */,
+				8209DF8C947A746E31E7DCA6 /* zettel_iOS */,
+				B8CB1F1B4140CF19FFCEAD57 /* Frameworks */,
+				D1A6FA9EEB6C62FD196DCF1D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB4AE9A0944EC425E294C97F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				726BF316688F3F7979181348 /* zettel */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DB1ED341FEE1E6B62EC4CA7A /* zettel_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B218B33A925DEA7BF8BA56E /* Build configuration list for PBXNativeTarget "zettel_iOS" */;
+			buildPhases = (
+				A69E0F09A329C22005F1F371 /* Build Rust Code */,
+				B3BBABEC7492B8CEB4E29E10 /* Sources */,
+				8FA5F70EA140F40D2E776706 /* Resources */,
+				551B7CBF624D72A199C2743B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = zettel_iOS;
+			productName = zettel_iOS;
+			productReference = C7A8B53A0A73CBD8EDDB1095 /* zettel_iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		09DF4667BA0FF73C1FBA9ED9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = C82FAF6A27C02A14FD1E3A99 /* Build configuration list for PBXProject "zettel" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F039C8BD6B0C55F10D860C3E;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB1ED341FEE1E6B62EC4CA7A /* zettel_iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8FA5F70EA140F40D2E776706 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				099D82AB13700CD16D3B910B /* Assets.xcassets in Resources */,
+				B9C7225330B98EDFF1528CF5 /* LaunchScreen.storyboard in Resources */,
+				AE6E0738E94D584E1CCB1CE3 /* assets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A69E0F09A329C22005F1F371 /* Build Rust Code */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Rust Code";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libapp.a",
+				"$(SRCROOT)/Externals/arm64/${CONFIGURATION}/libapp.a",
+				"$(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libapp.a",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "deno task tauri ios xcode-script -v --platform ${PLATFORM_DISPLAY_NAME:?} --sdk-root ${SDKROOT:?} --framework-search-paths \"${FRAMEWORK_SEARCH_PATHS:?}\" --header-search-paths \"${HEADER_SEARCH_PATHS:?}\" --gcc-preprocessor-definitions \"${GCC_PREPROCESSOR_DEFINITIONS:-}\" --configuration ${CONFIGURATION:?} ${FORCE_COLOR} ${ARCHS:?}";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3BBABEC7492B8CEB4E29E10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF97F760451301BD432DD00C /* main.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		277CD85905A20C7E65BAF054 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = (
+					arm64,
+					"arm64-sim",
+				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = zettel_iOS/zettel_iOS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\".\"",
+				);
+				INFOPLIST_FILE = zettel_iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=arm64-sim]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
+				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
+				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zettel.app;
+				PRODUCT_NAME = zettel;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64  arm64-sim";
+			};
+			name = release;
+		};
+		66B2BD38512FB1A4B4B2E09F /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = release;
+		};
+		7A6551FB54A3804EA84CA8FF /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = debug;
+		};
+		EF5643E8D6803C42103EDD04 /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = (
+					arm64,
+					"arm64-sim",
+				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = zettel_iOS/zettel_iOS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\".\"",
+				);
+				INFOPLIST_FILE = zettel_iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=arm64-sim]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
+				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
+				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zettel.app;
+				PRODUCT_NAME = zettel;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64  arm64-sim";
+			};
+			name = debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B218B33A925DEA7BF8BA56E /* Build configuration list for PBXNativeTarget "zettel_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF5643E8D6803C42103EDD04 /* debug */,
+				277CD85905A20C7E65BAF054 /* release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+		C82FAF6A27C02A14FD1E3A99 /* Build configuration list for PBXProject "zettel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A6551FB54A3804EA84CA8FF /* debug */,
+				66B2BD38512FB1A4B4B2E09F /* release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 09DF4667BA0FF73C1FBA9ED9 /* Project object */;
+}
