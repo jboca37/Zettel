@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "zettel",
+  "productName": "zettle",
   "version": "0.1.0",
-  "identifier": "com.zettel.app",
+  "identifier": "com.zettle.app",
   "build": {
     "beforeDevCommand": "deno task dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "zettel",
+        "title": "zettle",
         "width": 800,
         "height": 600
       }

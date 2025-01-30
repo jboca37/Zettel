@@ -1,6 +1,6 @@
-name: zettel
+name: zettle
 options:
-  bundleIdPrefix: com.zettel.app
+  bundleIdPrefix: com.zettle.app
   deploymentTarget:
     iOS: 13.0
 fileGroups: [../../src]
@@ -10,8 +10,8 @@ configs:
 settingGroups:
   app:
     base:
-      PRODUCT_NAME: zettel
-      PRODUCT_BUNDLE_IDENTIFIER: com.zettel.app
+      PRODUCT_NAME: zettle
+      PRODUCT_BUNDLE_IDENTIFIER: com.zettle.app
 targetTemplates:
   app:
     type: application
@@ -24,20 +24,20 @@ targetTemplates:
     settings:
       groups: [app]
 targets:
-  zettel_iOS:
+  zettle_iOS:
     type: application
     platform: iOS
     sources:
       - path: Sources
       - path: Assets.xcassets
       - path: Externals
-      - path: zettel_iOS
+      - path: zettle_iOS
       - path: assets
         buildPhase: resources
         type: folder
       - path: LaunchScreen.storyboard
     info:
-      path: zettel_iOS/Info.plist
+      path: zettle_iOS/Info.plist
       properties:
         LSRequiresIPhoneOS: true
         UILaunchStoryboardName: LaunchScreen
@@ -54,7 +54,7 @@ targets:
         CFBundleShortVersionString: 0.1.0
         CFBundleVersion: 0.1.0
     entitlements:
-      path: zettel_iOS/zettel_iOS.entitlements
+      path: zettle_iOS/zettle_iOS.entitlements
     scheme:
       environmentVariables:
         RUST_BACKTRACE: full

@@ -7,174 +7,174 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		093575BA746A6C8A6A902ED9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED9B6AD35749A9D4184203D /* WebKit.framework */; };
-		099D82AB13700CD16D3B910B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115AA5C107047EFB1191709B /* Assets.xcassets */; };
-		2316CDFEF84A85F42C493879 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF15F8B06022F60D8B2687F /* UIKit.framework */; };
-		35DFEAB54A285093149C1893 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8861773107CEEE3AA80F6158 /* CoreGraphics.framework */; };
-		4AE20E0262DAA228AE5FCBE5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4E532AD6C29806C653F7F /* Security.framework */; };
-		66FB3D1AA5DAD689B7AE4FAA /* libapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD12FEF31C29CD3F9886C5F8 /* libapp.a */; };
-		735E947C5395CEB9D0816AB2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305720ADB0810751B01BE6F4 /* QuartzCore.framework */; };
-		9EFA004374BA079196A96280 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F64BBD064777D30334DDC7 /* MetalKit.framework */; };
-		AE6E0738E94D584E1CCB1CE3 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 20D25B2DC072421D848EA4C5 /* assets */; };
-		B9C7225330B98EDFF1528CF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCB87A315859F73C356945A /* LaunchScreen.storyboard */; };
-		CF97F760451301BD432DD00C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7085E9A13C8703C2DAD68E26 /* main.mm */; };
-		DF673DADEC1D82C86AF4C9BE /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA5BBB2FCC1E38AFBECB5E2 /* Metal.framework */; };
+		064F4445D49E115D33A48C4B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884273407EF1BDE4D262DCFC /* QuartzCore.framework */; };
+		0AF678DCB6A58A20542EA89E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBA80D184C8C9BDB2DB7587 /* CoreGraphics.framework */; };
+		4338736D5DBD648D93FD82E4 /* libapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53B5AE3C574DC021CFA1F78C /* libapp.a */; };
+		4FCEE62F018DE4543803F8AE /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 35301437275349481CBEA815 /* assets */; };
+		79705B155BB39C11C6C34836 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CB032CFDB009E58240D93 /* UIKit.framework */; };
+		898203DE35B669984A303D84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E30B91815F2BCD70442A19E /* Assets.xcassets */; };
+		99BC87311AD79A6A1EBB216B /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95C7A6BC4FFE086D96BA3A21 /* main.mm */; };
+		B11EFE64F063E0FCE42680D0 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC1E6EE35D175CDF61C20B2 /* MetalKit.framework */; };
+		D34C0BBE69ECE8B8286F7FF6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59B349B672FAFDBF5DC55FB /* Security.framework */; };
+		E548E6103D92161B8A2F53D6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81936374C36BB275A1E395C8 /* WebKit.framework */; };
+		ED0392584796AF6A839C7249 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4ED9CB197A97A0B12F8FD56 /* Metal.framework */; };
+		FB17600380C0F51E49EB5B09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89492E334C63597BF98690E3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		00B4E532AD6C29806C653F7F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		115AA5C107047EFB1191709B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1ED9B6AD35749A9D4184203D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		20D25B2DC072421D848EA4C5 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
-		2BA5BBB2FCC1E38AFBECB5E2 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
-		305720ADB0810751B01BE6F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		43A597FB65D865326974B586 /* zettel_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zettel_iOS.entitlements; sourceTree = "<group>"; };
-		47F64BBD064777D30334DDC7 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
-		5AF15F8B06022F60D8B2687F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6EAA5B92590D5568473587AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		7085E9A13C8703C2DAD68E26 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		7DCB87A315859F73C356945A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		86047BFDC8F083618F545EE5 /* main.rs */ = {isa = PBXFileReference; path = main.rs; sourceTree = "<group>"; };
-		8861773107CEEE3AA80F6158 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		AD12FEF31C29CD3F9886C5F8 /* libapp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libapp.a; sourceTree = "<group>"; };
-		B8BB208AC956A1198E80A3D3 /* lib.rs */ = {isa = PBXFileReference; path = lib.rs; sourceTree = "<group>"; };
-		BFA4E43F71365E0796AFF654 /* bindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bindings.h; sourceTree = "<group>"; };
-		C7A8B53A0A73CBD8EDDB1095 /* zettel_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = zettel_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0319387CB854535FCA400C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		088B800F1116E06D3DFD737B /* bindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bindings.h; sourceTree = "<group>"; };
+		2988DE4A536C21A4AF9A226C /* zettle_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zettle_iOS.entitlements; sourceTree = "<group>"; };
+		2E30B91815F2BCD70442A19E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35301437275349481CBEA815 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
+		3F3488BCD45158C7086F9AE6 /* lib.rs */ = {isa = PBXFileReference; path = lib.rs; sourceTree = "<group>"; };
+		53B5AE3C574DC021CFA1F78C /* libapp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libapp.a; sourceTree = "<group>"; };
+		661D57CD29AAADDA9BDF03B9 /* zettle_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = zettle_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81936374C36BB275A1E395C8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		85484275FD300547DFC572E5 /* main.rs */ = {isa = PBXFileReference; path = main.rs; sourceTree = "<group>"; };
+		884273407EF1BDE4D262DCFC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		89492E334C63597BF98690E3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		95C7A6BC4FFE086D96BA3A21 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		B4ED9CB197A97A0B12F8FD56 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		BC5CB032CFDB009E58240D93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DCBA80D184C8C9BDB2DB7587 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E59B349B672FAFDBF5DC55FB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FBC1E6EE35D175CDF61C20B2 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		551B7CBF624D72A199C2743B /* Frameworks */ = {
+		810A57818BE9A8A2C0C18180 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66FB3D1AA5DAD689B7AE4FAA /* libapp.a in Frameworks */,
-				35DFEAB54A285093149C1893 /* CoreGraphics.framework in Frameworks */,
-				DF673DADEC1D82C86AF4C9BE /* Metal.framework in Frameworks */,
-				9EFA004374BA079196A96280 /* MetalKit.framework in Frameworks */,
-				735E947C5395CEB9D0816AB2 /* QuartzCore.framework in Frameworks */,
-				4AE20E0262DAA228AE5FCBE5 /* Security.framework in Frameworks */,
-				2316CDFEF84A85F42C493879 /* UIKit.framework in Frameworks */,
-				093575BA746A6C8A6A902ED9 /* WebKit.framework in Frameworks */,
+				4338736D5DBD648D93FD82E4 /* libapp.a in Frameworks */,
+				0AF678DCB6A58A20542EA89E /* CoreGraphics.framework in Frameworks */,
+				ED0392584796AF6A839C7249 /* Metal.framework in Frameworks */,
+				B11EFE64F063E0FCE42680D0 /* MetalKit.framework in Frameworks */,
+				064F4445D49E115D33A48C4B /* QuartzCore.framework in Frameworks */,
+				D34C0BBE69ECE8B8286F7FF6 /* Security.framework in Frameworks */,
+				79705B155BB39C11C6C34836 /* UIKit.framework in Frameworks */,
+				E548E6103D92161B8A2F53D6 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		726BF316688F3F7979181348 /* zettel */ = {
-			isa = PBXGroup;
-			children = (
-				7085E9A13C8703C2DAD68E26 /* main.mm */,
-				DF3FA64CB67D04155698D243 /* bindings */,
-			);
-			path = zettel;
-			sourceTree = "<group>";
-		};
-		8209DF8C947A746E31E7DCA6 /* zettel_iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6EAA5B92590D5568473587AC /* Info.plist */,
-				43A597FB65D865326974B586 /* zettel_iOS.entitlements */,
-			);
-			path = zettel_iOS;
-			sourceTree = "<group>";
-		};
-		AFA749F92B429330DEF030CE /* src */ = {
-			isa = PBXGroup;
-			children = (
-				B8BB208AC956A1198E80A3D3 /* lib.rs */,
-				86047BFDC8F083618F545EE5 /* main.rs */,
-			);
-			name = src;
-			path = ../../src;
-			sourceTree = "<group>";
-		};
-		B8CB1F1B4140CF19FFCEAD57 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8861773107CEEE3AA80F6158 /* CoreGraphics.framework */,
-				AD12FEF31C29CD3F9886C5F8 /* libapp.a */,
-				2BA5BBB2FCC1E38AFBECB5E2 /* Metal.framework */,
-				47F64BBD064777D30334DDC7 /* MetalKit.framework */,
-				305720ADB0810751B01BE6F4 /* QuartzCore.framework */,
-				00B4E532AD6C29806C653F7F /* Security.framework */,
-				5AF15F8B06022F60D8B2687F /* UIKit.framework */,
-				1ED9B6AD35749A9D4184203D /* WebKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D0821F2FE7171B78BC0E2B2F /* Externals */ = {
+		049234CA7F1388B0A7A8BD7E /* Externals */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Externals;
 			sourceTree = "<group>";
 		};
-		D1A6FA9EEB6C62FD196DCF1D /* Products */ = {
+		1B822AE327EEA70020BD1CD1 /* zettle_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C7A8B53A0A73CBD8EDDB1095 /* zettel_iOS.app */,
+				0319387CB854535FCA400C0D /* Info.plist */,
+				2988DE4A536C21A4AF9A226C /* zettle_iOS.entitlements */,
+			);
+			path = zettle_iOS;
+			sourceTree = "<group>";
+		};
+		5241981FD02B6953CE35ECA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCBA80D184C8C9BDB2DB7587 /* CoreGraphics.framework */,
+				53B5AE3C574DC021CFA1F78C /* libapp.a */,
+				B4ED9CB197A97A0B12F8FD56 /* Metal.framework */,
+				FBC1E6EE35D175CDF61C20B2 /* MetalKit.framework */,
+				884273407EF1BDE4D262DCFC /* QuartzCore.framework */,
+				E59B349B672FAFDBF5DC55FB /* Security.framework */,
+				BC5CB032CFDB009E58240D93 /* UIKit.framework */,
+				81936374C36BB275A1E395C8 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55A3FEA4BD4890A7B63BF362 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				62A5777B6BB289E852FD3AF3 /* zettle */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5EA59FFFE8D515A8A7A6EE08 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3F3488BCD45158C7086F9AE6 /* lib.rs */,
+				85484275FD300547DFC572E5 /* main.rs */,
+			);
+			name = src;
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+		62A5777B6BB289E852FD3AF3 /* zettle */ = {
+			isa = PBXGroup;
+			children = (
+				95C7A6BC4FFE086D96BA3A21 /* main.mm */,
+				922FB81D822DDB48FE8EE144 /* bindings */,
+			);
+			path = zettle;
+			sourceTree = "<group>";
+		};
+		8A9B43D3793F91EF138EF610 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				661D57CD29AAADDA9BDF03B9 /* zettle_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DF3FA64CB67D04155698D243 /* bindings */ = {
+		922FB81D822DDB48FE8EE144 /* bindings */ = {
 			isa = PBXGroup;
 			children = (
-				BFA4E43F71365E0796AFF654 /* bindings.h */,
+				088B800F1116E06D3DFD737B /* bindings.h */,
 			);
 			path = bindings;
 			sourceTree = "<group>";
 		};
-		F039C8BD6B0C55F10D860C3E = {
+		E081C12DCDC544BB1E5E02BC = {
 			isa = PBXGroup;
 			children = (
-				20D25B2DC072421D848EA4C5 /* assets */,
-				115AA5C107047EFB1191709B /* Assets.xcassets */,
-				7DCB87A315859F73C356945A /* LaunchScreen.storyboard */,
-				D0821F2FE7171B78BC0E2B2F /* Externals */,
-				FB4AE9A0944EC425E294C97F /* Sources */,
-				AFA749F92B429330DEF030CE /* src */,
-				8209DF8C947A746E31E7DCA6 /* zettel_iOS */,
-				B8CB1F1B4140CF19FFCEAD57 /* Frameworks */,
-				D1A6FA9EEB6C62FD196DCF1D /* Products */,
+				35301437275349481CBEA815 /* assets */,
+				2E30B91815F2BCD70442A19E /* Assets.xcassets */,
+				89492E334C63597BF98690E3 /* LaunchScreen.storyboard */,
+				049234CA7F1388B0A7A8BD7E /* Externals */,
+				55A3FEA4BD4890A7B63BF362 /* Sources */,
+				5EA59FFFE8D515A8A7A6EE08 /* src */,
+				1B822AE327EEA70020BD1CD1 /* zettle_iOS */,
+				5241981FD02B6953CE35ECA4 /* Frameworks */,
+				8A9B43D3793F91EF138EF610 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		FB4AE9A0944EC425E294C97F /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				726BF316688F3F7979181348 /* zettel */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DB1ED341FEE1E6B62EC4CA7A /* zettel_iOS */ = {
+		ADBD6ACE4A93A002421373A8 /* zettle_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B218B33A925DEA7BF8BA56E /* Build configuration list for PBXNativeTarget "zettel_iOS" */;
+			buildConfigurationList = AC70344A147057FE69667956 /* Build configuration list for PBXNativeTarget "zettle_iOS" */;
 			buildPhases = (
-				A69E0F09A329C22005F1F371 /* Build Rust Code */,
-				B3BBABEC7492B8CEB4E29E10 /* Sources */,
-				8FA5F70EA140F40D2E776706 /* Resources */,
-				551B7CBF624D72A199C2743B /* Frameworks */,
+				B0677972B2C4138536BA367F /* Build Rust Code */,
+				0B85391234822162B78671EE /* Sources */,
+				382A01A57B2510D5DA66F316 /* Resources */,
+				810A57818BE9A8A2C0C18180 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = zettel_iOS;
-			productName = zettel_iOS;
-			productReference = C7A8B53A0A73CBD8EDDB1095 /* zettel_iOS.app */;
+			name = zettle_iOS;
+			productName = zettle_iOS;
+			productReference = 661D57CD29AAADDA9BDF03B9 /* zettle_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		09DF4667BA0FF73C1FBA9ED9 /* Project object */ = {
+		83DABBB7EF01557576CBFBBE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
@@ -182,7 +182,7 @@
 				TargetAttributes = {
 				};
 			};
-			buildConfigurationList = C82FAF6A27C02A14FD1E3A99 /* Build configuration list for PBXProject "zettel" */;
+			buildConfigurationList = CB842690CF89696FA2519E75 /* Build configuration list for PBXProject "zettle" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -190,30 +190,30 @@
 				Base,
 				en,
 			);
-			mainGroup = F039C8BD6B0C55F10D860C3E;
+			mainGroup = E081C12DCDC544BB1E5E02BC;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DB1ED341FEE1E6B62EC4CA7A /* zettel_iOS */,
+				ADBD6ACE4A93A002421373A8 /* zettle_iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8FA5F70EA140F40D2E776706 /* Resources */ = {
+		382A01A57B2510D5DA66F316 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				099D82AB13700CD16D3B910B /* Assets.xcassets in Resources */,
-				B9C7225330B98EDFF1528CF5 /* LaunchScreen.storyboard in Resources */,
-				AE6E0738E94D584E1CCB1CE3 /* assets in Resources */,
+				898203DE35B669984A303D84 /* Assets.xcassets in Resources */,
+				FB17600380C0F51E49EB5B09 /* LaunchScreen.storyboard in Resources */,
+				4FCEE62F018DE4543803F8AE /* assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A69E0F09A329C22005F1F371 /* Build Rust Code */ = {
+		B0677972B2C4138536BA367F /* Build Rust Code */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -238,18 +238,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B3BBABEC7492B8CEB4E29E10 /* Sources */ = {
+		0B85391234822162B78671EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF97F760451301BD432DD00C /* main.mm in Sources */,
+				99BC87311AD79A6A1EBB216B /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		277CD85905A20C7E65BAF054 /* release */ = {
+		2D812ECE884B91A39459B27B /* release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -258,7 +258,7 @@
 					"arm64-sim",
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = zettel_iOS/zettel_iOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = zettle_iOS/zettle_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
@@ -267,7 +267,7 @@
 					"$(inherited)",
 					"\".\"",
 				);
-				INFOPLIST_FILE = zettel_iOS/Info.plist;
+				INFOPLIST_FILE = zettle_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -275,71 +275,15 @@
 				"LIBRARY_SEARCH_PATHS[arch=arm64-sim]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zettel.app;
-				PRODUCT_NAME = zettel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zettle.app;
+				PRODUCT_NAME = zettle;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
 			};
 			name = release;
 		};
-		66B2BD38512FB1A4B4B2E09F /* release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-			};
-			name = release;
-		};
-		7A6551FB54A3804EA84CA8FF /* debug */ = {
+		542CE9F989C81E9F62E529B6 /* debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -402,7 +346,63 @@
 			};
 			name = debug;
 		};
-		EF5643E8D6803C42103EDD04 /* debug */ = {
+		573CB5D2B344758E5F441CF3 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = release;
+		};
+		B8E35AAA4D4BC132EC6A11EF /* debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -411,7 +411,7 @@
 					"arm64-sim",
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = zettel_iOS/zettel_iOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = zettle_iOS/zettle_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
@@ -420,7 +420,7 @@
 					"$(inherited)",
 					"\".\"",
 				);
-				INFOPLIST_FILE = zettel_iOS/Info.plist;
+				INFOPLIST_FILE = zettle_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,8 +428,8 @@
 				"LIBRARY_SEARCH_PATHS[arch=arm64-sim]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zettel.app;
-				PRODUCT_NAME = zettel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zettle.app;
+				PRODUCT_NAME = zettle;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
@@ -439,25 +439,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2B218B33A925DEA7BF8BA56E /* Build configuration list for PBXNativeTarget "zettel_iOS" */ = {
+		AC70344A147057FE69667956 /* Build configuration list for PBXNativeTarget "zettle_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EF5643E8D6803C42103EDD04 /* debug */,
-				277CD85905A20C7E65BAF054 /* release */,
+				B8E35AAA4D4BC132EC6A11EF /* debug */,
+				2D812ECE884B91A39459B27B /* release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = debug;
 		};
-		C82FAF6A27C02A14FD1E3A99 /* Build configuration list for PBXProject "zettel" */ = {
+		CB842690CF89696FA2519E75 /* Build configuration list for PBXProject "zettle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7A6551FB54A3804EA84CA8FF /* debug */,
-				66B2BD38512FB1A4B4B2E09F /* release */,
+				542CE9F989C81E9F62E529B6 /* debug */,
+				573CB5D2B344758E5F441CF3 /* release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 09DF4667BA0FF73C1FBA9ED9 /* Project object */;
+	rootObject = 83DABBB7EF01557576CBFBBE /* Project object */;
 }

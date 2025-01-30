@@ -1,13 +1,13 @@
 # Uncomment the next line to define a global platform for your project
 
-target 'zettel_iOS' do
+target 'zettle_iOS' do
 platform :ios, '13.0'
-  # Pods for zettel_iOS
+  # Pods for zettle_iOS
 end
 
-target 'zettel_macOS' do
+target 'zettle_macOS' do
 platform :osx, '11.0'
-  # Pods for zettel_macOS
+  # Pods for zettle_macOS
 end
 
 # Delete the deployment target for iOS and macOS, causing it to be inherited from the Podfile
