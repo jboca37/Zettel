@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { invoke } from "@tauri-apps/api/core";
+    import { invoke } from "@tauri-apps/api/tauri";
     import Editor from "./Editor.svelte";
+    import FullCalendar from '../lib/FullCalendar.svelte';
 
     let name = $state("");
     let greetMsg = $state("");
@@ -45,6 +46,9 @@
         <button type="submit">Greet</button>
     </form>
     <p>{greetMsg}</p>
+
+    <h2>My Calendar</h2>
+    <FullCalendar />
 </main>
 
 <style>
