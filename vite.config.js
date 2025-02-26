@@ -1,18 +1,15 @@
 import { defineConfig } from "vite";
 import { sveltekit } from "@sveltejs/kit/vite";
+import path from "path";
 
-// @ts-expect-error process is a nodejs global
+// @ts-expect-error process is a Node.js global
 const host = process.env.TAURI_DEV_HOST;
 
-// https://vitejs.dev/config/
-export default defineConfig(async () => ({
+export default defineConfig({
   plugins: [sveltekit()],
 
-  // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
-  //
-  // 1. prevent vite from obscuring rust errors
-  clearScreen: false,
-  // 2. tauri expects a fixed port, fail if that port is not available
+  clearScreen: false, // Prevents Vite from hiding Rust errors
+
   server: {
     port: 1420,
     strictPort: true,
@@ -25,8 +22,23 @@ export default defineConfig(async () => ({
         }
       : undefined,
     watch: {
-      // 3. tell vite to ignore watching `src-tauri`
-      ignored: ["**/src-tauri/**"],
+      ignored: ["**/src-tauri/**"], // Ignore Tauri source files
     },
   },
-}));
+
+  ssr: {
+    noExternal: ["@tauri-apps/api"], // Ensure Tauri API is bundled in SSR mode
+  },
+
+  build: {
+    rollupOptions: {
+      // Removed `"@tauri-apps/api"` from external to allow proper resolution
+    },
+  },
+
+  resolve: {
+    alias: {
+      $lib: path.resolve(__dirname, "src/lib"), // Ensure correct module resolution
+    },
+  },
+});
