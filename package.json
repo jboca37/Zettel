@@ -29,7 +29,7 @@
     "@tiptap/starter-kit": "^2.11.5",
     "marked": "^15.0.7",
     "svelte-icons": "^2.1.0",
-    "tailwind": "^4.0.0",
+    "tailwindcss": "^4.0.9",
     "tiptap-markdown": "^0.8.10"
   },
   "devDependencies": {
