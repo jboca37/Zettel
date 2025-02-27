@@ -5,11 +5,15 @@
     "npm:@sveltejs/kit@^2.9.0": "2.16.1_@sveltejs+vite-plugin-svelte@5.0.3__svelte@5.19.2___acorn@8.14.0__vite@6.0.11_svelte@5.19.2__acorn@8.14.0_vite@6.0.11",
     "npm:@sveltejs/vite-plugin-svelte@5": "5.0.3_svelte@5.19.2__acorn@8.14.0_vite@6.0.11",
     "npm:@tauri-apps/api@2": "2.2.0",
+    "npm:@tauri-apps/api@^2.2.0": "2.2.0",
     "npm:@tauri-apps/cli@2": "2.2.5",
+    "npm:@tauri-apps/plugin-fs@2.2": "2.2.0",
     "npm:@tauri-apps/plugin-opener@2": "2.2.5",
     "npm:@tiptap/core@^2.11.5": "2.11.5_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2",
     "npm:@tiptap/extension-highlight@^2.11.5": "2.11.5_@tiptap+core@2.11.5__@tiptap+pm@2.11.5___prosemirror-model@1.24.1___prosemirror-state@1.4.3___prosemirror-view@1.37.2_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2",
     "npm:@tiptap/extension-placeholder@^2.11.5": "2.11.5_@tiptap+core@2.11.5__@tiptap+pm@2.11.5___prosemirror-model@1.24.1___prosemirror-state@1.4.3___prosemirror-view@1.37.2_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2",
+    "npm:@tiptap/extension-task-item@^2.11.5": "2.11.5_@tiptap+core@2.11.5__@tiptap+pm@2.11.5___prosemirror-model@1.24.1___prosemirror-state@1.4.3___prosemirror-view@1.37.2_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2",
+    "npm:@tiptap/extension-task-list@^2.11.5": "2.11.5_@tiptap+core@2.11.5__@tiptap+pm@2.11.5___prosemirror-model@1.24.1___prosemirror-state@1.4.3___prosemirror-view@1.37.2_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2",
     "npm:@tiptap/pm@^2.11.5": "2.11.5_prosemirror-model@1.24.1_prosemirror-state@1.4.3_prosemirror-view@1.37.2",
     "npm:@tiptap/starter-kit@^2.11.5": "2.11.5_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2_@tiptap+core@2.11.5__@tiptap+pm@2.11.5___prosemirror-model@1.24.1___prosemirror-state@1.4.3___prosemirror-view@1.37.2",
     "npm:marked@^15.0.7": "15.0.7",
@@ -286,6 +290,12 @@
         "@tauri-apps/cli-win32-x64-msvc"
       ]
     },
+    "@tauri-apps/plugin-fs@2.2.0": {
+      "integrity": "sha512-+08mApuONKI8/sCNEZ6AR8vf5vI9DXD4YfrQ9NQmhRxYKMLVhRW164vdW5BSLmMpuevftpQ2FVoL9EFkfG9Z+g==",
+      "dependencies": [
+        "@tauri-apps/api"
+      ]
+    },
     "@tauri-apps/plugin-opener@2.2.5": {
       "integrity": "sha512-hHsJ9RPWpZvZEPVFaL+d25gABMUMOf/A6ESXnvf/ii9guTukj58WXsAE/SOysXRIhej7kseRCxnOnIMpSCdUsQ==",
       "dependencies": [
@@ -414,6 +424,19 @@
     },
     "@tiptap/extension-strike@2.11.5_@tiptap+core@2.11.5__@tiptap+pm@2.11.5___prosemirror-model@1.24.1___prosemirror-state@1.4.3___prosemirror-view@1.37.2_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2": {
       "integrity": "sha512-PVfUiCqrjvsLpbIoVlegSY8RlkR64F1Rr2RYmiybQfGbg+AkSZXDeO0eIrc03//4gua7D9DfIozHmAKv1KN3ow==",
+      "dependencies": [
+        "@tiptap/core"
+      ]
+    },
+    "@tiptap/extension-task-item@2.11.5_@tiptap+core@2.11.5__@tiptap+pm@2.11.5___prosemirror-model@1.24.1___prosemirror-state@1.4.3___prosemirror-view@1.37.2_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2": {
+      "integrity": "sha512-Xvvww8cleM6fcNejP916vzhL31yJnAmuBvABsOV0kHGtAqkqUVCSDcN/1qjI4ihVNeIWEJBHDczjDfZzvLy1xA==",
+      "dependencies": [
+        "@tiptap/core",
+        "@tiptap/pm"
+      ]
+    },
+    "@tiptap/extension-task-list@2.11.5_@tiptap+core@2.11.5__@tiptap+pm@2.11.5___prosemirror-model@1.24.1___prosemirror-state@1.4.3___prosemirror-view@1.37.2_@tiptap+pm@2.11.5__prosemirror-model@1.24.1__prosemirror-state@1.4.3__prosemirror-view@1.37.2": {
+      "integrity": "sha512-DJpIrBu/bjXYmyYoWQDH2GkpvRmizT9Fvbx5MscFYyfmSsYryD3vRBtCDz08gviwoRII+pFBrG4Ynb0XuQ7DsA==",
       "dependencies": [
         "@tiptap/core"
       ]
@@ -987,12 +1010,15 @@
         "npm:@sveltejs/adapter-static@^3.0.6",
         "npm:@sveltejs/kit@^2.9.0",
         "npm:@sveltejs/vite-plugin-svelte@5",
-        "npm:@tauri-apps/api@2",
+        "npm:@tauri-apps/api@^2.2.0",
         "npm:@tauri-apps/cli@2",
+        "npm:@tauri-apps/plugin-fs@2.2",
         "npm:@tauri-apps/plugin-opener@2",
         "npm:@tiptap/core@^2.11.5",
         "npm:@tiptap/extension-highlight@^2.11.5",
         "npm:@tiptap/extension-placeholder@^2.11.5",
+        "npm:@tiptap/extension-task-item@^2.11.5",
+        "npm:@tiptap/extension-task-list@^2.11.5",
         "npm:@tiptap/pm@^2.11.5",
         "npm:@tiptap/starter-kit@^2.11.5",
         "npm:marked@^15.0.7",
