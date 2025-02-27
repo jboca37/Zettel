@@ -1,13 +1,14 @@
 <script lang="ts">
     import { invoke } from "@tauri-apps/api/core";
     import Editor from "./Editor.svelte";
+    import FullCalendar from '../lib/FullCalendar.svelte';
 
     let name = $state("");
     let greetMsg = $state("");
 
     async function greet(event: Event) {
         event.preventDefault();
-        // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+        // For reference - Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
         greetMsg = await invoke("greet", { name });
     }
 </script>
@@ -45,6 +46,9 @@
         <button type="submit">Greet</button>
     </form>
     <p>{greetMsg}</p>
+
+    <h2>My Calendar</h2>
+    <FullCalendar />
 </main>
 
 <style>

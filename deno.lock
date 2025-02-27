@@ -1007,6 +1007,9 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@fullcalendar/core@^6.1.15",
+        "npm:@fullcalendar/daygrid@^6.1.15",
+        "npm:@fullcalendar/interaction@^6.1.15",
         "npm:@sveltejs/adapter-static@^3.0.6",
         "npm:@sveltejs/kit@^2.9.0",
         "npm:@sveltejs/vite-plugin-svelte@5",
@@ -1025,6 +1028,8 @@
         "npm:mdsvex@~0.12.3",
         "npm:svelte-check@4",
         "npm:svelte-icons@^2.1.0",
+        "npm:svelte-language-server@~0.17.10",
+        "npm:svelte2tsx@~0.7.34",
         "npm:svelte@5",
         "npm:tiptap-markdown@~0.8.10",
         "npm:typescript@~5.6.2",
