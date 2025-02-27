@@ -1,6 +1,9 @@
 {
   "version": "4",
   "specifiers": {
+    "npm:@fullcalendar/core@^6.1.15": "6.1.15",
+    "npm:@fullcalendar/daygrid@^6.1.15": "6.1.15_@fullcalendar+core@6.1.15",
+    "npm:@fullcalendar/interaction@^6.1.15": "6.1.15_@fullcalendar+core@6.1.15",
     "npm:@sveltejs/adapter-static@^3.0.6": "3.0.8_@sveltejs+kit@2.16.1__@sveltejs+vite-plugin-svelte@5.0.3___svelte@5.19.2____acorn@8.14.0___vite@6.0.11__svelte@5.19.2___acorn@8.14.0__vite@6.0.11_@sveltejs+vite-plugin-svelte@5.0.3__svelte@5.19.2___acorn@8.14.0__vite@6.0.11_svelte@5.19.2__acorn@8.14.0_vite@6.0.11",
     "npm:@sveltejs/kit@^2.9.0": "2.16.1_@sveltejs+vite-plugin-svelte@5.0.3__svelte@5.19.2___acorn@8.14.0__vite@6.0.11_svelte@5.19.2__acorn@8.14.0_vite@6.0.11",
     "npm:@sveltejs/vite-plugin-svelte@5": "5.0.3_svelte@5.19.2__acorn@8.14.0_vite@6.0.11",
@@ -107,6 +110,24 @@
     },
     "@esbuild/win32-x64@0.24.2": {
       "integrity": "sha512-7VTgWzgMGvup6aSqDPLiW5zHaxYJGTO4OokMjIlrCtf+VpEL+cXKtCvg723iguPYI5oaUNdS+/V7OU2gvXVWEg=="
+    },
+    "@fullcalendar/core@6.1.15": {
+      "integrity": "sha512-BuX7o6ALpLb84cMw1FCB9/cSgF4JbVO894cjJZ6kP74jzbUZNjtwffwRdA+Id8rrLjT30d/7TrkW90k4zbXB5Q==",
+      "dependencies": [
+        "preact"
+      ]
+    },
+    "@fullcalendar/daygrid@6.1.15_@fullcalendar+core@6.1.15": {
+      "integrity": "sha512-j8tL0HhfiVsdtOCLfzK2J0RtSkiad3BYYemwQKq512cx6btz6ZZ2RNc/hVnIxluuWFyvx5sXZwoeTJsFSFTEFA==",
+      "dependencies": [
+        "@fullcalendar/core"
+      ]
+    },
+    "@fullcalendar/interaction@6.1.15_@fullcalendar+core@6.1.15": {
+      "integrity": "sha512-DOTSkofizM7QItjgu7W68TvKKvN9PSEEvDJceyMbQDvlXHa7pm/WAVtAc6xSDZ9xmB1QramYoWGLHkCYbTW1rQ==",
+      "dependencies": [
+        "@fullcalendar/core"
+      ]
     },
     "@jridgewell/gen-mapping@0.3.8": {
       "integrity": "sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA==",
@@ -716,6 +737,9 @@
         "source-map-js"
       ]
     },
+    "preact@10.12.1": {
+      "integrity": "sha512-l8386ixSsBdbreOAkqtrwqHwdvR35ID8c3rKPa8lCWuO86dBi32QWHV4vfsZK1utLLFMvw+Z5Ad4XLkZzchscg=="
+    },
     "prism-svelte@0.4.7": {
       "integrity": "sha512-yABh19CYbM24V7aS7TuPYRNMqthxwbvx6FF/Rw920YbyBWO3tnyPIqRMgHuSVsLmuHkkBS1Akyof463FVdkeDQ=="
     },
@@ -1028,8 +1052,6 @@
         "npm:mdsvex@~0.12.3",
         "npm:svelte-check@4",
         "npm:svelte-icons@^2.1.0",
-        "npm:svelte-language-server@~0.17.10",
-        "npm:svelte2tsx@~0.7.34",
         "npm:svelte@5",
         "npm:tiptap-markdown@~0.8.10",
         "npm:typescript@~5.6.2",
