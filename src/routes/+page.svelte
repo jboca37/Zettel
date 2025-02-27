@@ -13,12 +13,5 @@
     }
 </script>
 
-<h2>My Calendar</h2>
+<p class="text-2xl font-bold">My Calendar</p>
 <FullCalendar />
-
-<style lang="postcss">
-    @reference "tailwindcss/theme";
-    :global(html) {
-        background-color: theme(--color-gray-100);
-    }
-</style>
