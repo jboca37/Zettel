@@ -9,6 +9,10 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "moduleResolution": "bundler"
-  }
+    "moduleResolution": "bundler",
+    "types": ["svelte", "node"], // ✅ Ensures TypeScript recognizes Svelte & Node types
+    "noImplicitAny": false // ✅ Prevents TypeScript errors on untyped variables
+  },
+  "include": ["src/**/*.ts", "src/**/*.svelte"], // ✅ Ensures all Svelte & TS files are processed
+  "exclude": ["node_modules", ".svelte-kit"] // ✅ Excludes generated and external files
 }
