@@ -3,5 +3,33 @@
   "identifier": "default",
   "description": "Capability for the main window",
   "windows": ["dirOptions", "mainView"],
-  "permissions": ["core:default", "opener:default", "fs:default"]
+  "permissions": [
+    {
+      "identifier": "fs:scope",
+      "allow": [
+        {
+          "path": "$HOME/**"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:allow-mkdir"
+    },
+    {
+      "identifier": "fs:allow-read-dir"
+    },
+    {
+      "identifier": "fs:allow-exists"
+    },
+    {
+      "identifier": "core:window:allow-close"
+    },
+    {
+      "identifier": "core:window:allow-show"
+    },
+    "core:default",
+    "opener:default",
+    "dialog:default",
+    "store:default"
+  ]
 }

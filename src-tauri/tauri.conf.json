@@ -13,12 +13,17 @@
     "windows": [
       {
         "label": "dirOptions",
+        "url": "/dirOptions",
         "width": 800,
-        "height": 600,
-        "create": false
+        "height": 650,
+        "resizable": false,
+        "hiddenTitle": true
       },
       {
-        "label": "mainView"
+        "label": "mainView",
+        "create": false,
+        "resizable": true,
+        "hiddenTitle": true
       }
     ],
     "security": {
