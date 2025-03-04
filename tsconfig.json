@@ -1,0 +1,28 @@
+{
+  "extends": "./.svelte-kit/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "module": "ESNext",  // ✅ Allows modern module imports
+    "moduleResolution": "bundler", // ✅ Recommended for TypeScript 5+ with bundlers
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],  // ✅ Ensures browser APIs are supported
+    "types": [
+      "svelte",
+      "node",
+      "@sveltejs/kit",
+      "@fullcalendar/core",
+      "@fullcalendar/daygrid",
+      "@fullcalendar/interaction",
+      "tailwindcss"
+    ],
+    "noImplicitAny": false
+  },
+  "include": ["src/**/*.ts", "src/**/*.svelte", "vite.config.ts", "vite.config.js"],
+  "exclude": ["node_modules", ".svelte-kit"]
+}
