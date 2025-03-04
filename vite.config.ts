@@ -11,7 +11,10 @@ const config: UserConfig = {
   plugins: [sveltekit()],
   css: {
     postcss: {
-      plugins: [tailwindcss, autoprefixer],
+      plugins: [
+        require("tailwindcss"), // ✅ Ensures Tailwind loads properly
+        require("autoprefixer"),
+      ],
     },
   },
   clearScreen: false,

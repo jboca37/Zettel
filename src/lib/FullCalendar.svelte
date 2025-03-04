@@ -1,8 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { Calendar } from "@fullcalendar/core"; // ✅ Ensures correct import
-    import dayGridPlugin from "@fullcalendar/daygrid";
-    import interactionPlugin from "@fullcalendar/interaction";
+    import type { CalendarOptions } from "@fullcalendar/core"; // ✅ Import FullCalendar types
+    import { Calendar } from "@fullcalendar/core/index.js"; // ✅ Explicitly import ES module
+    import dayGridPlugin from "@fullcalendar/daygrid/index.js";
+    import interactionPlugin from "@fullcalendar/interaction/index.js";
 
     let calendar: Calendar;
     let calendarElement: HTMLDivElement | null = null; // ✅ Explicitly define type
@@ -10,7 +11,7 @@
     onMount(() => {
         if (!calendarElement) return; // ✅ Prevents errors if not yet assigned
 
-        calendar = new Calendar(calendarElement, {
+        const options: CalendarOptions = {
             plugins: [dayGridPlugin, interactionPlugin],
             initialView: "dayGridMonth",
             selectable: true,
@@ -21,8 +22,9 @@
             dateClick: (info) => {
                 alert(`Clicked on: ${info.dateStr}`);
             }
-        });
+        };
 
+        calendar = new Calendar(calendarElement, options);
         calendar.render();
     });
 </script>
