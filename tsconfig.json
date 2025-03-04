@@ -3,16 +3,24 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true, // ✅ Allows correct importing of default exports
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "moduleResolution": "bundler",
-    "types": ["svelte", "node"], // ✅ Ensures TypeScript recognizes Svelte & Node types
-    "noImplicitAny": false // ✅ Prevents TypeScript errors on untyped variables
+    "module": "Node16", // ✅ Required when using "moduleResolution": "node16"
+    "moduleResolution": "node16", // ✅ Fixes module resolution errors
+    "types": [
+      "svelte",
+      "node",
+      "@sveltejs/kit",
+      "@fullcalendar/core",
+      "@fullcalendar/daygrid",
+      "@fullcalendar/interaction"
+    ],
+    "noImplicitAny": false
   },
-  "include": ["src/**/*.ts", "src/**/*.svelte"], // ✅ Ensures all Svelte & TS files are processed
-  "exclude": ["node_modules", ".svelte-kit"] // ✅ Excludes generated and external files
+  "include": ["src/**/*.ts", "src/**/*.svelte", "vite.config.ts"],
+  "exclude": ["node_modules", ".svelte-kit"]
 }

@@ -1,3 +1,7 @@
-@import "tailwindcss";
-@plugin "daisyui";
-@plugin "@tailwindcss/typography";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Correct way to include plugins */
+@import "daisyui";
+@import "@tailwindcss/typography";
