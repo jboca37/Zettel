@@ -22,10 +22,17 @@
 <div class="flex w-full flex-col items-center align-center">
     <Header />
 
-    <button
-        class="btn-wide btn btn-xs sm:btn-sm md:btn-md lg:btn-md xl:btn-md btn-primary mx-6 mb-8"
-        onclick={clearStore}>Clear Store</button
-    >
+    <div class="flex itesm-center w-full justify-center">
+        <a
+            href="/"
+            class="btn-wide btn btn-xs sm:btn-sm md:btn-md lg:btn-md xl:btn-md btn-primary mx-6 mb-8"
+            >Home
+        </a>
+        <button
+            class="btn-wide btn btn-xs sm:btn-sm md:btn-md lg:btn-md xl:btn-md btn-primary mx-6 mb-8"
+            onclick={clearStore}>Clear Store</button
+        >
+    </div>
 
     <QuickStart />
 
