@@ -1,21 +1,20 @@
-import { defineConfig, type PluginOption } from "vite";
+import { defineConfig } from "vite";
 import { sveltekit } from "@sveltejs/kit/vite";
-import * as tailwindcss from "tailwindcss"; // ✅ Fixes Tailwind import
-import * as autoprefixer from "autoprefixer"; // ✅ Fixes Autoprefixer import
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 import process from "node:process";
 
-export default defineConfig({
-  plugins: [sveltekit()], // ✅ Removed Tailwind from plugins (handled via PostCSS)
+// ✅ Explicitly import Vite types
+import type { UserConfig } from "vite";
 
+const config: UserConfig = {
+  plugins: [sveltekit()],
   css: {
     postcss: {
-      plugins: [tailwindcss.default, autoprefixer.default], // ✅ Ensures correct ES module imports
+      plugins: [tailwindcss, autoprefixer],
     },
   },
-
-  // Vite options tailored for Tauri development
   clearScreen: false,
-
   server: {
     port: 1420,
     strictPort: true,
@@ -28,7 +27,9 @@ export default defineConfig({
         }
       : undefined,
     watch: {
-      ignored: ["**/src-tauri/**"], // ✅ Ignore Tauri source files
+      ignored: ["**/src-tauri/**"],
     },
   },
-});
+};
+
+export default defineConfig(config);

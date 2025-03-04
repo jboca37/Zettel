@@ -5,7 +5,7 @@ export default {
     extend: {},
   },
   plugins: [
-    require("daisyui"), // ✅ Ensures DaisyUI is loaded
-    require("@tailwindcss/typography"), // ✅ Ensures Typography is loaded
+    require("daisyui"), // ✅ Registers DaisyUI
+    require("@tailwindcss/typography"), // ✅ Registers Tailwind Typography
   ],
 };

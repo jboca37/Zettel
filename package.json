@@ -39,7 +39,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.9",
     "@tauri-apps/cli": "^2",
-    "@types/node": "^22.13.8",
+    "@types/node": "^22.13.9",
     "autoprefixer": "^10.4.20",
     "daisyui": "^5.0.0",
     "mdsvex": "^0.12.3",

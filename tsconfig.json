@@ -3,21 +3,22 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "esModuleInterop": true, // ✅ Allows correct importing of default exports
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "module": "Node16", // ✅ Required when using "moduleResolution": "node16"
-    "moduleResolution": "node16", // ✅ Fixes module resolution errors
+    "module": "Node16",
+    "moduleResolution": "node16",
     "types": [
       "svelte",
       "node",
       "@sveltejs/kit",
       "@fullcalendar/core",
       "@fullcalendar/daygrid",
-      "@fullcalendar/interaction"
+      "@fullcalendar/interaction",
+      "tailwindcss"
     ],
     "noImplicitAny": false
   },

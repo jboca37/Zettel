@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { Calendar } from "@fullcalendar/core";
+    import { Calendar } from "@fullcalendar/core"; // ✅ Ensures correct import
     import dayGridPlugin from "@fullcalendar/daygrid";
     import interactionPlugin from "@fullcalendar/interaction";
 
