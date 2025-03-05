@@ -9,6 +9,7 @@
     import QuickStart from "./quickStart.svelte";
     import ChooseVault from "./chooseVault.svelte";
     import { load } from "@tauri-apps/plugin-store";
+    import { closeDirView } from "$lib/closeDirView.svelte";
 
     async function clearStore() {
         // Implement clear store logic here
@@ -22,12 +23,12 @@
 <div class="flex w-full flex-col items-center align-center">
     <Header />
 
-    <div class="flex itesm-center w-full justify-center">
-        <a
-            href="/"
+    <div class="flex items-center w-full justify-center">
+        <button
+            onclick={closeDirView}
             class="btn-wide btn btn-xs sm:btn-sm md:btn-md lg:btn-md xl:btn-md btn-primary mx-6 mb-8"
             >Home
-        </a>
+        </button>
         <button
             class="btn-wide btn btn-xs sm:btn-sm md:btn-md lg:btn-md xl:btn-md btn-primary mx-6 mb-8"
             onclick={clearStore}>Clear Store</button

@@ -27,6 +27,15 @@
     {
       "identifier": "core:window:allow-show"
     },
+    {
+      "identifier": "fs:allow-read-file"
+    },
+    {
+      "identifier": "fs:allow-read-text-file"
+    },
+    {
+      "identifier": "fs:allow-app-read"
+    },
     "core:default",
     "opener:default",
     "dialog:default",

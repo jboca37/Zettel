@@ -3,6 +3,8 @@
     import { join } from "@tauri-apps/api/path";
     import { load } from "@tauri-apps/plugin-store";
     import { onMount } from "svelte";
+    import { readTextFile } from "@tauri-apps/plugin-fs";
+    import Editor from "$lib/Editor.svelte";
 
     // Define FileEntry interface manually since it's not exported
     interface FileEntry {
@@ -17,6 +19,7 @@
     let isLoading = $state(true);
     let selectedFile = $state<string | null>(null);
     let error = $state<string | null>(null);
+    let fileContent = $state<string | null>(null);
 
     // Interface for file tree structure
     interface FileTreeNode {
@@ -115,10 +118,21 @@
         // No need to call fileTree.update() anymore, the mutation is reactive
     }
 
-    function selectFile(path: string) {
+    async function selectFile(path: string) {
         selectedFile = path;
-        // Here you would handle file loading/display
-        console.log("Selected file:", path);
+
+        if (path.toLowerCase().endsWith(".md")) {
+            try {
+                // Load the file content
+                fileContent = await readTextFile(path);
+            } catch (err) {
+                console.error(`Error loading file ${path}:`, err);
+                error = `Failed to load file: ${err instanceof Error ? err.message : String(err)}`;
+                fileContent = null;
+            }
+        } else {
+            fileContent = null;
+        }
     }
 
     function getFileIcon(node: FileTreeNode): string {
@@ -201,7 +215,17 @@
         <div class="flex-1 bg-base-200 rounded-box p-4">
             {#if selectedFile}
                 <p>Viewing: {selectedFile}</p>
-                <!-- Display file content here -->
+                {#if fileContent !== null}
+                    <div class="prose">
+                        <Editor content={fileContent} />
+                    </div>
+                {:else}
+                    <div class="alert alert-info">
+                        <span
+                            >This file type cannot be displayed in the editor.</span
+                        >
+                    </div>
+                {/if}
             {:else}
                 <div class="flex justify-center items-center h-full">
                     <div class="text-center">
@@ -209,6 +233,9 @@
                         <p class="text-base-content/70">
                             Select a file from the sidebar to view its contents
                         </p>
+                        <div class="prose">
+                            <Editor />
+                        </div>
                     </div>
                 </div>
             {/if}
