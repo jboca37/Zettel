@@ -74,9 +74,9 @@
         data-tip="auth"
       >
         <a
-          href="/signin"
+          href="/auth"
           class="material-symbols-outlined"
-          class:active={page.url.pathname === "/signin"}>settings</a
+          class:active={page.url.pathname === "/auth"}>settings</a
         >
       </div>
     </div>
