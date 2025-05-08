@@ -43,19 +43,9 @@
         data-tip="Editor"
       >
         <a
-          href="/editor"
+          href="/"
           class="material-symbols-outlined"
-          class:active={page.url.pathname === "/editor"}>folder</a
-        >
-      </div>
-      <div
-        class="flex w-full justify-center items-center tooltip tooltip-right"
-        data-tip="Calendar"
-      >
-        <a
-          href="/calendar"
-          class="material-symbols-outlined"
-          class:active={page.url.pathname === "/calendar"}>calendar_month</a
+          class:active={page.url.pathname === "/"}>folder</a
         >
       </div>
       <div
@@ -70,35 +60,15 @@
       </div>
       <div
         class="flex w-full justify-center items-center tooltip tooltip-right"
-        data-tip="Eisenhower Matrix"
+        data-tip="Calendar"
       >
         <a
-          href="/eisenhower"
+          href="/calendar"
           class="material-symbols-outlined"
-          class:active={page.url.pathname === "/eisenhower"}>add</a
+          class:active={page.url.pathname === "/calendar"}>calendar_month</a
         >
       </div>
-      <div
-        class="flex w-full justify-center items-center tooltip tooltip-right"
-        data-tip="Habits"
-      >
-        <a
-          href="/habits"
-          class="material-symbols-outlined"
-          class:active={page.url.pathname === "/habits"}
-          >local_fire_department</a
-        >
-      </div>
-      <div
-        class="flex w-full justify-center items-center tooltip tooltip-right"
-        data-tip="Pomodoro"
-      >
-        <a
-          href="/pomodoro"
-          class="material-symbols-outlined"
-          class:active={page.url.pathname === "/pomodoro"}>timer</a
-        >
-      </div>
+
       <div
         class="flex w-full justify-center items-center tooltip tooltip-right"
         data-tip="auth"
