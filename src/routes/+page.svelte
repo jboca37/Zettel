@@ -1,10 +1,22 @@
 <script lang="ts">
-  import { readDir } from "@tauri-apps/plugin-fs";
+  import * as path from "@tauri-apps/api/path";
+  import { create, readDir, readTextFile, mkdir } from "@tauri-apps/plugin-fs";
   import { join } from "@tauri-apps/api/path";
   import { load } from "@tauri-apps/plugin-store";
   import { onMount } from "svelte";
-  import { readTextFile } from "@tauri-apps/plugin-fs";
+  import Modal from "./Modal.svelte";
   import Editor from "$lib/Editor.svelte";
+
+  let newFileName: string = $state("");
+  let newDirName: string = $state("");
+  let currentFilePath: string = $state("");
+  let showFileMenu: boolean = $state(false);
+  let showDirectoryMenu: boolean = $state(false);
+  let showEditNotesModal: boolean = $state(false);
+  let showDeleteNotesModal: boolean = $state(false);
+  let contextPath: string = $state("");
+  let contextName: string = $state("");
+  let contextIsDir: boolean = $state(false);
 
   // Define FileEntry interface manually since it's not exported
   interface FileEntry {
@@ -20,6 +32,9 @@
   let selectedFile = $state<string | null>(null);
   let error = $state<string | null>(null);
   let fileContent = $state<string | null>(null);
+  let pos = $state({ x: 0, y: 0 });
+  let menu = $state({ w: 0, h: 0 });
+  let browser = $state({ w: 0, h: 0 });
 
   // Interface for file tree structure
   interface FileTreeNode {
@@ -30,6 +45,43 @@
     isOpen?: boolean;
   }
 
+  async function createFile(fileName: string) {
+    try {
+      const store = await load("directories.json", { autoSave: false });
+      const lastUsedVault = await store.get<string>("currentVault");
+      const fileNameWithExtension = fileName + ".md";
+      if (lastUsedVault) {
+        console.log(lastUsedVault);
+        const fullpath = await path.join(lastUsedVault, fileNameWithExtension);
+        console.log(fullpath);
+
+        const file = await create(fullpath);
+
+        file.close();
+        loadFiles();
+      }
+    } catch (e: unknown) {
+      console.error("Error: ", e);
+    }
+  }
+
+  async function createDir(dirName: string) {
+    try {
+      const store = await load("directories.json", { autoSave: false });
+      const lastUsedVault = await store.get<string>("currentVault");
+      if (lastUsedVault) {
+        console.log(lastUsedVault);
+        const fullpath = await path.join(lastUsedVault, dirName);
+        console.log(fullpath);
+
+        await mkdir(fullpath);
+
+        loadFiles();
+      }
+    } catch (e: unknown) {
+      console.error("Error: ", e);
+    }
+  }
   onMount(async () => {
     try {
       await loadFiles();
@@ -112,7 +164,6 @@
 
   function toggleDirectory(node: FileTreeNode) {
     node.isOpen = !node.isOpen;
-    // No need to call fileTree.update() anymore, the mutation is reactive
   }
 
   async function selectFile(path: string) {
@@ -153,7 +204,146 @@
         return "📃";
     }
   }
+
+  function directoryContextMenu(e: any) {
+    showDirectoryMenu = true;
+    browser = {
+      w: window.innerWidth,
+      h: window.innerHeight,
+    };
+    pos = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+    // If bottom part of context menu will be displayed
+    // after right-click, then change the position of the
+    // context menu. This position is controlled by `top` and `left`
+    // at inline style.
+    // Instead of context menu is displayed from top left of cursor position
+    // when right-click occur, it will be displayed from bottom left.
+    if (browser.h - pos.y < menu.h) pos.y = pos.y - menu.h;
+    if (browser.w - pos.x < menu.w) pos.x = pos.x - menu.w;
+  }
+
+  function fileContextMenu(e: any) {
+    showFileMenu = true;
+    browser = {
+      w: window.innerWidth,
+      h: window.innerHeight,
+    };
+    pos = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+    // If bottom part of context menu will be displayed
+    // after right-click, then change the position of the
+    // context menu. This position is controlled by `top` and `left`
+    // at inline style.
+    // Instead of context menu is displayed from top left of cursor position
+    // when right-click occur, it will be displayed from bottom left.
+    if (browser.h - pos.y < menu.h) pos.y = pos.y - menu.h;
+    if (browser.w - pos.x < menu.w) pos.x = pos.x - menu.w;
+  }
+  function getContextMenuDimension(node: any) {
+    // This function will get context menu dimension
+    // when navigation is shown => showMenu = true
+    let height = node.offsetHeight;
+    let width = node.offsetWidth;
+    menu = {
+      h: height,
+      w: width,
+    };
+  }
 </script>
+
+<svelte:window
+  onclick={() => {
+    showDirectoryMenu = false;
+    showFileMenu = false;
+  }}
+/>
+<!-- File Context Menu -->
+{#if showFileMenu}
+  <nav
+    use:getContextMenuDimension
+    style="position: absolute; top:{pos.y}px; left:{pos.x}px"
+    class="menu bg-base-200 rounded-box w-56 z-50"
+  >
+    <button onclick={() => (showEditNotesModal = true)} class="btn btn-ghost"
+      >Edit Name</button
+    >
+    <button onclick={() => (showDeleteNotesModal = true)} class="btn btn-ghost"
+      >Delete File</button
+    >
+  </nav>
+{/if}
+
+<!-- Dir Context Menu -->
+{#if showDirectoryMenu}
+  <nav
+    use:getContextMenuDimension
+    style="position: absolute; top:{pos.y}px; left:{pos.x}px"
+    class="menu bg-base-200 rounded-box w-56 z-50"
+  >
+    <button onclick={() => (showEditNotesModal = true)} class="btn btn-ghost"
+      >Edit Name</button
+    >
+    <button onclick={() => (showDeleteNotesModal = true)} class="btn btn-ghost"
+      >Delete Dir</button
+    >
+  </nav>
+{/if}
+
+<!-- Update the Notes Name -->
+<Modal bind:showEditNotesModal {contextPath}>
+  {#snippet header()}
+    <div class="flex justify-center prose">
+      <h2 class="items-center">Edit List</h2>
+    </div>
+  {/snippet}
+
+  <form
+    onsubmit={() => {
+      showEditNotesModal = false;
+    }}
+  >
+    <input type="text" placeholder="Type here" class="input w-full" />
+    <div class="flex flex-row justify-end w-full">
+      <button
+        class="btn btn-error"
+        onsubmit={() => {
+          showEditNotesModal = false;
+        }}>Cancel</button
+      >
+      <input type="submit" class="btn" value="Save" />
+    </div>
+  </form>
+</Modal>
+
+<!-- Delete the  -->
+<Modal bind:showDeleteNotesModal {contextPath}>
+  {#snippet header()}
+    {#if contextIsDir === true}
+      <div class="flex justify-center prose">
+        <h2 class="items-center">Delete Directory</h2>
+      </div>
+    {:else}
+      <div class="flex justify-center prose">
+        <h2 class="items-center">Delete Note</h2>
+      </div>
+    {/if}
+  {/snippet}
+
+  {#if contextIsDir === true}
+    <div class="flex justify-center prose">
+      <p class="items-center">The selected directory will be deleted.</p>
+    </div>
+  {:else}
+    <div class="flex justify-center prose">
+      <p class="items-center">The selected note will be deleted.</p>
+    </div>
+  {/if}
+</Modal>
 
 <div class="drawer lg:drawer-open">
   <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
@@ -183,28 +373,25 @@
       </label>
     </div>
 
-    <div class="flex-1 bg-base-200 rounded-box p-4">
+    <div class="flex-1 bg-base-200 h-dvh rounded-box p-4">
       {#if selectedFile}
         <p>Viewing: {selectedFile}</p>
         {#if fileContent !== null}
           <div class="prose">
-            <Editor content={fileContent} />
+            <Editor filePath={currentFilePath} editorContent={fileContent} />
           </div>
         {:else}
           <div class="alert alert-info">
-            <span>This file type cannot be displayed in the editor.</span>
+            <p>This file type cannot be displayed in the editor.</p>
           </div>
         {/if}
       {:else}
         <div class="flex justify-center items-center h-full">
-          <div class="text-center">
+          <div class="text-center h-full">
             <h2 class="text-xl font-semibold">No file selected</h2>
             <p class="text-base-content/70">
               Select a file from the sidebar to view its contents
             </p>
-            <div class="prose">
-              <Editor />
-            </div>
           </div>
         </div>
       {/if}
@@ -241,6 +428,44 @@
 
       <div class="divider my-1"></div>
 
+      <form
+        onsubmit={() => {
+          createFile(newFileName);
+        }}
+        class="join px-2 pt-4"
+      >
+        <div>
+          <label class="input validator join-item">
+            <input
+              type="text"
+              bind:value={newFileName}
+              name="taskListName"
+              placeholder="Add Note"
+              required
+            />
+          </label>
+        </div>
+        <input type="submit" class="btn btn-neutral join-item" value="Add" />
+      </form>
+      <form
+        onsubmit={() => {
+          createDir(newDirName);
+        }}
+        class="join px-2 pt-4"
+      >
+        <div>
+          <label class="input validator join-item">
+            <input
+              type="text"
+              bind:value={newDirName}
+              name="taskListName"
+              placeholder="Add Dir"
+              required
+            />
+          </label>
+        </div>
+        <input type="submit" class="btn btn-neutral join-item" value="Add" />
+      </form>
       {#if isLoading}
         <div class="flex justify-center p-4">
           <span class="loading loading-spinner loading-md"></span>
@@ -279,6 +504,13 @@
                 <button
                   class="w-full text-left py-1 px-2 hover:bg-base-300 flex items-center font-medium"
                   onclick={() => toggleDirectory(node)}
+                  oncontextmenu={(event) => {
+                    event.preventDefault();
+                    directoryContextMenu(event);
+                    contextPath = node.path;
+                    contextName = node.name;
+                    contextIsDir = true;
+                  }}
                 >
                   <span class="mr-2">{getFileIcon(node)}</span>
                   {node.name}
@@ -294,6 +526,13 @@
                           <button
                             class="w-full text-left py-1 px-2 hover:bg-base-300 flex items-center font-medium"
                             onclick={() => toggleDirectory(child)}
+                            oncontextmenu={(event) => {
+                              event.preventDefault();
+                              directoryContextMenu(event);
+                              contextPath = child.path;
+                              contextName = child.name;
+                              contextIsDir = true;
+                            }}
                           >
                             <span class="mr-2">{getFileIcon(child)}</span>
                             {child.name}
@@ -309,7 +548,17 @@
                                   grandchild.path
                                     ? 'bg-primary/20'
                                     : ''}"
-                                  onclick={() => selectFile(grandchild.path)}
+                                  onclick={() => {
+                                    selectFile(grandchild.path);
+                                    currentFilePath = grandchild.path;
+                                  }}
+                                  oncontextmenu={(event) => {
+                                    event.preventDefault();
+                                    fileContextMenu(event);
+                                    contextPath = grandchild.path;
+                                    contextName = grandchild.name;
+                                    contextIsDir = false;
+                                  }}
                                 >
                                   <span class="mr-2"
                                     >{getFileIcon(grandchild)}</span
@@ -326,7 +575,17 @@
                           child.path
                             ? 'bg-primary/20'
                             : ''}"
-                          onclick={() => selectFile(child.path)}
+                          onclick={() => {
+                            selectFile(child.path);
+                            currentFilePath = child.path;
+                          }}
+                          oncontextmenu={(event) => {
+                            event.preventDefault();
+                            fileContextMenu(event);
+                            contextPath = child.path;
+                            contextName = child.name;
+                            contextIsDir = false;
+                          }}
                         >
                           <span class="mr-2">{getFileIcon(child)}</span>
                           {child.name}
@@ -342,7 +601,17 @@
                 node.path
                   ? 'bg-primary/20'
                   : ''}"
-                onclick={() => selectFile(node.path)}
+                onclick={() => {
+                  selectFile(node.path);
+                  currentFilePath = node.path;
+                }}
+                oncontextmenu={(event) => {
+                  event.preventDefault();
+                  fileContextMenu(event);
+                  contextPath = node.path;
+                  contextName = node.name;
+                  contextIsDir = false;
+                }}
               >
                 <span class="mr-2">{getFileIcon(node)}</span>
                 {node.name}

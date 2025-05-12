@@ -2,7 +2,10 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "Capability for the main window",
-  "windows": ["dirOptions", "mainView"],
+  "windows": [
+    "dirOptions",
+    "mainView"
+  ],
   "permissions": [
     {
       "identifier": "fs:scope",
@@ -35,6 +38,18 @@
     },
     {
       "identifier": "fs:allow-app-read"
+    },
+    {
+      "identifier": "fs:allow-create"
+    },
+    {
+      "identifier": "fs:allow-watch"
+    },
+    {
+      "identifier": "fs:allow-write-text-file"
+    },
+    {
+      "identifier": "fs:allow-remove"
     },
     "core:default",
     "opener:default",
