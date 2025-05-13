@@ -3710,9 +3710,11 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@fullcalendar/common@^5.11.5",
         "npm:@fullcalendar/core@^6.1.15",
         "npm:@fullcalendar/daygrid@^6.1.15",
         "npm:@fullcalendar/interaction@^6.1.15",
+        "npm:@fullcalendar/timegrid@^6.1.17",
         "npm:@sveltejs/adapter-static@^3.0.6",
         "npm:@sveltejs/kit@^2.9.0",
         "npm:@sveltejs/vite-plugin-svelte@5",
