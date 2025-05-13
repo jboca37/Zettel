@@ -126,14 +126,15 @@
         reminder = prompt("Enter reminder time (HH:MM, 24-hour format):") ?? null;
       }
 
-      calendar.addEvent({
-        title: reminder ? `🔔 ${note}` : note,
-        start: info.start,
-        end: info.end,
-        allDay: info.allDay,
-        backgroundColor: color,
-        extendedProps: { tag, reminder }
-      });
+    calendar.addEvent({
+      title: reminder ? `🔔 ${note} @ ${reminder}` : note,
+      start: info.start,
+      end: info.end,
+      allDay: info.allDay,
+      backgroundColor: color,
+      extendedProps: { tag, reminder }
+    });
+
 
       saveEvents();
     },
@@ -163,7 +164,7 @@
           info.event.setExtendedProp("tag", tag);
           info.event.setExtendedProp("reminder", newReminder);
           info.event.setProp("backgroundColor", color);
-          info.event.setProp("title", newReminder ? `🔔 ${input}` : input);
+          info.event.setProp("title", newReminder ? `🔔 ${input} @ ${newReminder}` : input);
         }
 
         saveEvents();
@@ -210,9 +211,13 @@
     overflow-wrap: break-word;
   }
 
-  :global(.fc-timegrid-event .fc-event-title) {
-    font-weight: 500;
-  }
+  :global(.fc-event-title) {
+  font-weight: 500;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  line-height: 1.2;
+}
+
 
   /* Optional: ensure short events have visible height */
   :global(.fc-timegrid-event-harness) {
@@ -225,8 +230,6 @@
 <!-- Mounts FullCalendar to this container -->
 <div class="calendar-container" bind:this={calendarElement}></div>
 
-"make the calendar views weekly month week and day which is a plug in"  
-"add time stamp for the reminders"
-"fix the errors for the Mac OS"
-"Persistance between session aka saving notes and use tauri store" 
+
+<!--"Persistance between session aka saving notes and use tauri store" -->
 
