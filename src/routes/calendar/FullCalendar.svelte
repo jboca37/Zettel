@@ -1,6 +1,6 @@
 <script lang="ts">
-  // Required FullCalendar CSS via CDN for Tauri compatibility (especially on Mac OS)
-  import "@fullcalendar/core/index.js"; // included for runtime dependencies
+  // Required FullCalendar CSS via CDN for Tauri compatibility (For Mac OS)
+  import "@fullcalendar/core/index.js"; 
   import { onMount } from "svelte";
   import { Calendar } from "@fullcalendar/core";
   import type { Calendar as CalendarInstance, EventApi } from "@fullcalendar/core";
@@ -97,7 +97,7 @@
   onMount(() => {
   calendar = new Calendar(calendarElement, {
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-    initialView: "dayGridMonth", // Default view: Month grid
+    initialView: "dayGridMonth", // Default view of FullCalendar: Month grid 
 
     // Toolbar at the top with view selection buttons
     headerToolbar: {
@@ -108,7 +108,7 @@
 
     editable: true,
     selectable: true,
-    selectMirror: true, // Fix: enables visual highlight and correct select behavior
+    selectMirror: true, 
 
     events: loadEvents(),
 
@@ -196,11 +196,10 @@
     padding: 5px;
   }
 
-  /* ⬇️ Add this below your existing styles ⬇️ */
 
-  /* Make timeGrid view cells taller and text more readable */
+  /* Make timeGrid view cells taller and text more readable to avoid missing text that can't be read */
   :global(.fc-timegrid-slot) {
-    height: 60px !important; /* taller rows */
+    height: 60px !important; 
   }
 
   :global(.fc-timegrid-event) {
@@ -219,7 +218,7 @@
 }
 
 
-  /* Optional: ensure short events have visible height */
+  /* Ensure short events have visible height */
   :global(.fc-timegrid-event-harness) {
     min-height: 50px !important;
   }
