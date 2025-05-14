@@ -43,7 +43,7 @@
   // Save current calendar events to sessionStorage for future use
   function saveEvents() {
     const events = calendar.getEvents().map((e) => ({
-      title: e.title.replace(/^\uD83D\uDD14 /, ""),
+      title: e.title.replace(/^🔔 /, "").replace(/ @ \d\d:\d\d$/, ""),
       start: e.startStr,
       tag: e.extendedProps.tag,
       reminder: e.extendedProps.reminder || null,
@@ -259,5 +259,10 @@ eventClick(info) {
   /* Ensure short events have visible height */
   :global(.fc-timegrid-event-harness) {
     min-height: 50px !important;
+  }
+  
+  /* Hides the auto-rendered start time before event titles */
+  :global(.fc-event-time) {
+    display: none !important;
   }
 </style>
