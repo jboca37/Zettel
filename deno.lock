@@ -2,9 +2,11 @@
   "version": "5",
   "specifiers": {
     "npm:@floating-ui/dom@^1.7.0": "1.7.0",
+    "npm:@fullcalendar/common@^5.11.5": "5.11.5",
     "npm:@fullcalendar/core@^6.1.17": "6.1.17",
     "npm:@fullcalendar/daygrid@^6.1.17": "6.1.17_@fullcalendar+core@6.1.17",
     "npm:@fullcalendar/interaction@^6.1.17": "6.1.17_@fullcalendar+core@6.1.17",
+    "npm:@fullcalendar/timegrid@^6.1.17": "6.1.17_@fullcalendar+core@6.1.17",
     "npm:@sveltejs/adapter-static@^3.0.6": "3.0.8_@sveltejs+kit@2.21.0__@sveltejs+vite-plugin-svelte@5.0.3___svelte@5.28.3____acorn@8.14.1___vite@6.3.5____@types+node@22.15.17____picomatch@4.0.2___@types+node@22.15.17__svelte@5.28.3___acorn@8.14.1__vite@6.3.5___@types+node@22.15.17___picomatch@4.0.2__acorn@8.14.1__@types+node@22.15.17_@sveltejs+vite-plugin-svelte@5.0.3__svelte@5.28.3___acorn@8.14.1__vite@6.3.5___@types+node@22.15.17___picomatch@4.0.2__@types+node@22.15.17_svelte@5.28.3__acorn@8.14.1_vite@6.3.5__@types+node@22.15.17__picomatch@4.0.2_@types+node@22.15.17",
     "npm:@sveltejs/kit@^2.21.0": "2.21.0_@sveltejs+vite-plugin-svelte@5.0.3__svelte@5.28.3___acorn@8.14.1__vite@6.3.5___@types+node@22.15.17___picomatch@4.0.2__@types+node@22.15.17_svelte@5.28.3__acorn@8.14.1_vite@6.3.5__@types+node@22.15.17__picomatch@4.0.2_acorn@8.14.1_@types+node@22.15.17",
     "npm:@sveltejs/vite-plugin-svelte@5": "5.0.3_svelte@5.28.3__acorn@8.14.1_vite@6.3.5__@types+node@22.15.17__picomatch@4.0.2_@types+node@22.15.17",
@@ -622,6 +624,12 @@
     "@floating-ui/utils@0.2.9": {
       "integrity": "sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg=="
     },
+    "@fullcalendar/common@5.11.5": {
+      "integrity": "sha512-3iAYiUbHXhjSVXnYWz27Od2cslztUPsOwiwKlfGvQxBixv2Kl6a8IPwaijKFYJHXdwYmfPoEgK7rvqAGVoIYwA==",
+      "dependencies": [
+        "tslib"
+      ]
+    },
     "@fullcalendar/core@6.1.17": {
       "integrity": "sha512-0W7lnIrv18ruJ5zeWBeNZXO8qCWlzxDdp9COFEsZnyNjiEhUVnrW/dPbjRKYpL0edGG0/Lhs0ghp1z/5ekt8ZA==",
       "dependencies": [
@@ -638,6 +646,13 @@
       "integrity": "sha512-AudvQvgmJP2FU89wpSulUUjeWv24SuyCx8FzH2WIPVaYg+vDGGYarI7K6PcM3TH7B/CyaBjm5Rqw9lXgnwt5YA==",
       "dependencies": [
         "@fullcalendar/core"
+      ]
+    },
+    "@fullcalendar/timegrid@6.1.17_@fullcalendar+core@6.1.17": {
+      "integrity": "sha512-K4PlA3L3lclLOs3IX8cvddeiJI9ZVMD7RA9IqaWwbvac771971foc9tFze9YY+Pqesf6S+vhS2dWtEVlERaGlQ==",
+      "dependencies": [
+        "@fullcalendar/core",
+        "@fullcalendar/daygrid"
       ]
     },
     "@grpc/grpc-js@1.9.15": {
@@ -4114,9 +4129,11 @@
     "packageJson": {
       "dependencies": [
         "npm:@floating-ui/dom@^1.7.0",
+        "npm:@fullcalendar/common@^5.11.5",
         "npm:@fullcalendar/core@^6.1.17",
         "npm:@fullcalendar/daygrid@^6.1.17",
         "npm:@fullcalendar/interaction@^6.1.17",
+        "npm:@fullcalendar/timegrid@^6.1.17",
         "npm:@sveltejs/adapter-static@^3.0.6",
         "npm:@sveltejs/kit@^2.21.0",
         "npm:@sveltejs/vite-plugin-svelte@5",

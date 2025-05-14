@@ -4,6 +4,17 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%sveltekit.assets%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- FullCalendar dayGrid & timeGrid CSS for proper rendering on macOS/Windows via CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.15/main.min.css"
+    />
+
     <title>Tauri + SvelteKit + Typescript App</title>
     %sveltekit.head%
   </head>
