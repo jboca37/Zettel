@@ -33,7 +33,7 @@
   // Prompt user to pick a tag by number based off the options
   function getTagFromPrompt(defaultTag = "other"): string {
     const choice = prompt(
-      `Select a tag number:\n` +
+      "Select a tag number:\n" +
         tagOptions.map((tag, i) => `${i + 1} - ${tag}`).join("\n"),
     );
     const index = parseInt(choice ?? "");
@@ -43,7 +43,7 @@
   // Save current calendar events to sessionStorage for future use
   function saveEvents() {
     const events = calendar.getEvents().map((e) => ({
-      title: e.title.replace(/^🔔 /, ""),
+      title: e.title.replace(/^\uD83D\uDD14 /, ""),
       start: e.startStr,
       tag: e.extendedProps.tag,
       reminder: e.extendedProps.reminder || null,
@@ -58,7 +58,7 @@
     try {
       const saved = JSON.parse(raw);
       return saved.map((e: any) => ({
-        title: e.reminder ? `🔔 ${e.title}` : e.title,
+        title: e.reminder ? `\uD83D\uDD14 ${e.title}` : e.title,
         start: e.start,
         allDay: true,
         backgroundColor: tagColors[e.tag] || tagColors.other,
@@ -81,7 +81,7 @@
 
       calendar.getEvents().forEach((event) => {
         const reminder = event.extendedProps.reminder;
-        const cleanTitle = event.title.replace(/^🔔 /, "");
+        const cleanTitle = event.title.replace(/^\uD83D\uDD14 /, "");
         const key = `${cleanTitle}-${event.startStr}-${reminder}`;
         if (
           reminder &&
@@ -90,7 +90,7 @@
           !remindedSet.has(key)
         ) {
           remindedSet.add(key);
-          alert(`⏰ Reminder: ${cleanTitle}`);
+          alert(`\u23F0 Reminder: ${cleanTitle}`);
         }
       });
     }, 30000);
@@ -116,65 +116,93 @@
       events: loadEvents(),
 
       // When user clicks a date or time range > create a note
-      select(info) {
-        const note = prompt(`Add a note for ${info.startStr.slice(0, 16)}:`);
-        if (!note) return;
+select(info) {
+  const note = prompt(`Add a note for ${info.startStr.slice(0, 16)}:`);
+  if (!note) return;
 
-        const tag = getTagFromPrompt();
-        const color = tagColors[tag] || tagColors.other;
+  const tag = getTagFromPrompt();
+  const color = tagColors[tag] || tagColors.other;
 
-        const wantsReminder =
-          prompt("Set a reminder? (yes/no)")?.toLowerCase() === "yes";
-        let reminder: string | null = null;
-        if (wantsReminder) {
-          reminder =
-            prompt("Enter reminder time (HH:MM, 24-hour format):") ?? null;
-        }
+  const wantsReminder =
+    prompt("Set a reminder? (yes/no)")?.toLowerCase() === "yes";
+  let reminder: string | null = null;
+  let eventStart = info.start;
+  let isAllDay = info.allDay;
 
-        calendar.addEvent({
-          title: reminder ? `🔔 ${note} @ ${reminder}` : note,
-          start: info.start,
-          end: info.end,
-          allDay: info.allDay,
-          backgroundColor: color,
-          extendedProps: { tag, reminder },
-        });
+  if (wantsReminder) {
+    reminder = prompt("Enter reminder time (HH:MM, 24-hour format):") ?? null;
 
-        saveEvents();
+    if (reminder) {
+      const dateStr = info.startStr.split("T")[0]; // "YYYY-MM-DD"
+      eventStart = new Date(`${dateStr}T${reminder}`);
+      isAllDay = false; // If time is provided, override allDay
+    }
+  }
+
+  const eventEnd = isAllDay
+    ? info.end
+    : new Date(eventStart.getTime() + 60 * 60 * 1000); // Add 1 hour duration for timed reminders
+
+  calendar.addEvent({
+    title: reminder ? `🔔 ${note} @ ${reminder}` : note,
+    start: eventStart,
+    end: eventEnd,
+    allDay: isAllDay,
+    backgroundColor: color,
+    display: "block", // Ensures color shows up
+    extendedProps: { tag, reminder },
+  });
+
+  saveEvents();
       },
 
       // When user clicks an event > allow editing or deleting
-      eventClick(info) {
-        const input = prompt(
-          "Edit your note below.\nTo delete this note, type DELETE NOTE exactly (case-sensitive).\n\nClick OK without changing the note to update the tag only:",
-          info.event.title.replace(/^🔔 /, ""),
-        );
-        if (input === null) return;
+eventClick(info) {
+  const input = prompt(
+    "Edit your note below.\nTo delete this note, type DELETE NOTE exactly (case-sensitive).\n\nClick OK without changing the note to update the tag only:",
+    info.event.title.replace(/^\uD83D\uDD14 /, ""),
+  );
+  if (input === null) return;
 
-        if (input.trim() === "DELETE NOTE") {
-          info.event.remove();
-        } else {
-          const wantsReminder =
-            prompt("Update reminder? (yes/no)")?.toLowerCase() === "yes";
-          let newReminder: string | null = null;
+  if (input.trim() === "DELETE NOTE") {
+    info.event.remove();
+  } else {
+    const wantsReminder =
+      prompt("Update reminder? (yes/no)")?.toLowerCase() === "yes";
+    let newReminder: string | null = null;
+    let newStart: Date = new Date(info.event.start!);
+    let isAllDay = info.event.allDay;
 
-          if (wantsReminder) {
-            newReminder = prompt("Enter reminder time (HH:MM):") ?? null;
-          }
+    if (wantsReminder) {
+      newReminder = prompt("Enter reminder time (HH:MM):") ?? null;
 
-          const tag = getTagFromPrompt(info.event.extendedProps.tag || "other");
-          const color = tagColors[tag] || tagColors.other;
+      if (newReminder) {
+        const dateStr = info.event.startStr.split("T")[0]; // Keep original date
+        newStart = new Date(`${dateStr}T${newReminder}`);
+        isAllDay = false; // Reminder time means not all-day
+      }
+    }
 
-          info.event.setExtendedProp("tag", tag);
-          info.event.setExtendedProp("reminder", newReminder);
-          info.event.setProp("backgroundColor", color);
-          info.event.setProp(
-            "title",
-            newReminder ? `🔔 ${input} @ ${newReminder}` : input,
-          );
-        }
+    const tag = getTagFromPrompt(info.event.extendedProps.tag || "other");
+    const color = tagColors[tag] || tagColors.other;
+    const newEnd = isAllDay
+      ? null
+      : new Date(newStart.getTime() + 60 * 60 * 1000); // Add 1-hour duration if timed
 
-        saveEvents();
+    info.event.setExtendedProp("tag", tag);
+    info.event.setExtendedProp("reminder", newReminder);
+    info.event.setProp("backgroundColor", color);
+    info.event.setProp("start", newStart);
+    info.event.setProp("allDay", isAllDay);
+    info.event.setProp("title", newReminder ? `🔔 ${input} @ ${newReminder}` : input);
+    info.event.setProp("display", "block");
+
+    if (!isAllDay) {
+      info.event.setProp("end", newEnd);
+    }
+  }
+
+  saveEvents();
       },
     });
 
@@ -186,7 +214,7 @@
 <!-- Mounts FullCalendar to this container -->
 <div class="calendar-container" bind:this={calendarElement}></div>
 
-<!--"Persistance between session aka saving notes and use tauri store" -->
+<!--Persistance between session aka saving notes and use tauri store-->
 
 <style>
   /* Calendar container styles */
