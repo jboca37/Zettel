@@ -1,11 +1,14 @@
 <script lang="ts">
-  import FriendCount from "./FriendCount.svelte";
   import UserStats from "./UserStats.svelte";
   import AwardsList from "./AwardsList.svelte";
   import Heatmap from "./Heatmap.svelte";
 
+  function changeProfilePicture() {}
+
+  function changeUserName() {}
+
   let user = $state({
-    name: "John Doe",
+    name: "Username",
     profilePicture:
       "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
     joinDate: "2023-01-01",
@@ -18,13 +21,6 @@
     [8, 32, 22, 45, 27],
     [18, 28, 38, 12, 48],
   ]);
-
-  // Function to update heatmapData with new random values
-  function randomizeData() {
-    heatmapData = heatmapData.map(
-      (row) => row.map(() => Math.floor(Math.random() * 50) + 1), // Random numbers between 1 and 50
-    );
-  }
 
   // Example of different color schemes
   const colorSchemes = {
@@ -43,33 +39,49 @@
     <div class="card-body">
       <div class="flex flex-col md:flex-row gap-6 items-center">
         <!-- Profile Picture -->
-        <div class="avatar">
+        <div
+          onclick={changeProfilePicture()}
+          onkeypress={changeProfilePicture()}
+          role="button"
+          tabindex={0}
+          class="avatar relative group cursor-pointer"
+        >
           <div
             class="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
           >
-            <img src={user.profilePicture} alt={user.name} />
+            <img
+              src={user.profilePicture}
+              alt={user.name}
+              class="w-full h-full object-cover rounded-full"
+            />
+          </div>
+          <div
+            class=" absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white"
+          >
+            <div
+              style="font-size: 56px;"
+              class=" m-5 material-symbols-outlined"
+            >
+              edit
+            </div>
           </div>
         </div>
 
         <!-- User Info -->
-        <div class="flex-1">
-          <h1 class="text-2xl font-bold">{user.name}</h1>
-          <p class="text-sm opacity-70">
-            Member since {user.joinDate}
-          </p>
-
-          <!-- Friend Count -->
-          <div class="mt-2">
-            <FriendCount />
-          </div>
-        </div>
-
-        <!-- Action Buttons -->
         <div
-          class="sm:flex sm:flex-row sm:gap-8 md:flex flex-col gap-6 items-center"
+          class="flex items-center group"
+          onclick={changeUserName()}
+          onkeypress={changeUserName()}
+          role="button"
+          tabindex={0}
         >
-          <div class="material-symbols-outlined">Settings</div>
-          <div class="material-symbols-outlined">Share</div>
+          <h1 class="text-2xl font-bold mr-2">{user.name}</h1>
+          <button
+            class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity duration-200 focus:outline-none"
+            aria-label="Edit username"
+          >
+            edit
+          </button>
         </div>
       </div>
     </div>

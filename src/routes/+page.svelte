@@ -10,6 +10,7 @@
   let newFileName: string = $state("");
   let newDirName: string = $state("");
   let currentFilePath: string = $state("");
+  let currentFileName: string = $state("");
   let showFileMenu: boolean = $state(false);
   let showDirectoryMenu: boolean = $state(false);
   let showEditNotesModal: boolean = $state(false);
@@ -325,11 +326,11 @@
   {#snippet header()}
     {#if contextIsDir === true}
       <div class="flex justify-center prose">
-        <h2 class="items-center">Delete Directory</h2>
+        <h2 class="items-center">Delete: {contextName}</h2>
       </div>
     {:else}
       <div class="flex justify-center prose">
-        <h2 class="items-center">Delete Note</h2>
+        <h2 class="items-center">Delete: {contextName}</h2>
       </div>
     {/if}
   {/snippet}
@@ -345,13 +346,13 @@
   {/if}
 </Modal>
 
+<!-- Main View -->
 <div class="drawer lg:drawer-open">
   <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
 
   <div class="drawer-content flex flex-col p-4">
-    <!-- Page content here -->
     <div class="flex justify-between items-center mb-4">
-      <h1 class="text-2xl font-bold">Document Viewer</h1>
+      <h1 class="text-2xl font-bold">{currentFileName}</h1>
       <label
         for="drawer-toggle"
         class="btn btn-primary drawer-button lg:hidden"
@@ -373,11 +374,10 @@
       </label>
     </div>
 
-    <div class="flex-1 bg-base-200 h-dvh rounded-box p-4">
+    <div class="flex-1 w-full bg-base-200 h-full rounded-box p-4">
       {#if selectedFile}
-        <p>Viewing: {selectedFile}</p>
         {#if fileContent !== null}
-          <div class="prose">
+          <div class="prose w-full h-full max-w-none">
             <Editor filePath={currentFilePath} editorContent={fileContent} />
           </div>
         {:else}
@@ -551,6 +551,7 @@
                                   onclick={() => {
                                     selectFile(grandchild.path);
                                     currentFilePath = grandchild.path;
+                                    currentFileName = grandchild.name;
                                   }}
                                   oncontextmenu={(event) => {
                                     event.preventDefault();
@@ -578,6 +579,7 @@
                           onclick={() => {
                             selectFile(child.path);
                             currentFilePath = child.path;
+                            currentFileName = child.name;
                           }}
                           oncontextmenu={(event) => {
                             event.preventDefault();
@@ -604,6 +606,7 @@
                 onclick={() => {
                   selectFile(node.path);
                   currentFilePath = node.path;
+                  currentFileName = node.name;
                 }}
                 oncontextmenu={(event) => {
                   event.preventDefault();
