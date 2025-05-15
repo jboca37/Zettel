@@ -4,6 +4,8 @@
   import { open } from "@tauri-apps/plugin-dialog";
   import { load } from "@tauri-apps/plugin-store";
   import { closeDirView } from "$lib/closeDirView.svelte";
+  import { initializeAchievementsStore } from "$lib/setInitialAchievements";
+  import { initializeUserStatsStore } from "$lib/userStore";
 
   let vaultName = $state("");
 
@@ -62,6 +64,9 @@
           currentVault: fullpath,
         },
       );
+
+      await initializeAchievementsStore();
+      await initializeUserStatsStore();
 
       await closeDirView();
     }
