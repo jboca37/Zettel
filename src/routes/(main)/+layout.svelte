@@ -1,11 +1,9 @@
 <script>
-  import "../app.css";
-  import ViewTransition from "./navigation.svelte";
+  import "../../app.css";
   import { page } from "$app/state";
   let { children } = $props();
 </script>
 
-<ViewTransition />
 <head>
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@1"
