@@ -3,6 +3,5 @@
 </script>
 
 <div>
-  <a href="/"> Back </a>
   <FullCalendar />
 </div>

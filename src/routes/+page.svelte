@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
   import Modal from "./Modal.svelte";
   import Editor from "$lib/Editor.svelte";
+  import { incrementNotesCount } from "$lib/userStore";
 
   let newFileName: string = $state("");
   let newDirName: string = $state("");
@@ -270,9 +271,6 @@
     style="position: absolute; top:{pos.y}px; left:{pos.x}px"
     class="menu bg-base-200 rounded-box w-56 z-50"
   >
-    <button onclick={() => (showEditNotesModal = true)} class="btn btn-ghost"
-      >Edit Name</button
-    >
     <button onclick={() => (showDeleteNotesModal = true)} class="btn btn-ghost"
       >Delete File</button
     >
@@ -286,9 +284,6 @@
     style="position: absolute; top:{pos.y}px; left:{pos.x}px"
     class="menu bg-base-200 rounded-box w-56 z-50"
   >
-    <button onclick={() => (showEditNotesModal = true)} class="btn btn-ghost"
-      >Edit Name</button
-    >
     <button onclick={() => (showDeleteNotesModal = true)} class="btn btn-ghost"
       >Delete Dir</button
     >
@@ -431,6 +426,7 @@
       <form
         onsubmit={() => {
           createFile(newFileName);
+          incrementNotesCount();
         }}
         class="join px-2 pt-4"
       >

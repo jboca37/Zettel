@@ -21,6 +21,7 @@
     "npm:@tauri-apps/plugin-store@2.2": "2.2.0",
     "npm:@tiptap/core@^3.0.0-beta.5": "3.0.0_@tiptap+pm@3.0.0__prosemirror-model@1.25.1__prosemirror-state@1.4.3__prosemirror-view@1.39.2",
     "npm:@tiptap/extension-highlight@^2.12.0": "2.12.0_@tiptap+core@3.0.0__@tiptap+pm@3.0.0___prosemirror-model@1.25.1___prosemirror-state@1.4.3___prosemirror-view@1.39.2_@tiptap+pm@3.0.0__prosemirror-model@1.25.1__prosemirror-state@1.4.3__prosemirror-view@1.39.2",
+    "npm:@tiptap/extension-list@^3.0.0-beta.5": "3.0.0-next.4_@tiptap+core@3.0.0__@tiptap+pm@3.0.0___prosemirror-model@1.25.1___prosemirror-state@1.4.3___prosemirror-view@1.39.2_@tiptap+pm@3.0.0__prosemirror-model@1.25.1__prosemirror-state@1.4.3__prosemirror-view@1.39.2",
     "npm:@tiptap/extension-placeholder@^2.12.0": "2.12.0_@tiptap+core@3.0.0__@tiptap+pm@3.0.0___prosemirror-model@1.25.1___prosemirror-state@1.4.3___prosemirror-view@1.39.2_@tiptap+pm@3.0.0__prosemirror-model@1.25.1__prosemirror-state@1.4.3__prosemirror-view@1.39.2",
     "npm:@tiptap/extension-task-item@^2.12.0": "2.12.0_@tiptap+core@3.0.0__@tiptap+pm@3.0.0___prosemirror-model@1.25.1___prosemirror-state@1.4.3___prosemirror-view@1.39.2_@tiptap+pm@3.0.0__prosemirror-model@1.25.1__prosemirror-state@1.4.3__prosemirror-view@1.39.2",
     "npm:@tiptap/extension-task-list@^2.12.0": "2.12.0_@tiptap+core@3.0.0__@tiptap+pm@3.0.0___prosemirror-model@1.25.1___prosemirror-state@1.4.3___prosemirror-view@1.39.2_@tiptap+pm@3.0.0__prosemirror-model@1.25.1__prosemirror-state@1.4.3__prosemirror-view@1.39.2",
@@ -1434,6 +1435,13 @@
         "@tiptap/core"
       ],
       "deprecated": true
+    },
+    "@tiptap/extension-list@3.0.0-next.4_@tiptap+core@3.0.0__@tiptap+pm@3.0.0___prosemirror-model@1.25.1___prosemirror-state@1.4.3___prosemirror-view@1.39.2_@tiptap+pm@3.0.0__prosemirror-model@1.25.1__prosemirror-state@1.4.3__prosemirror-view@1.39.2": {
+      "integrity": "sha512-Ok4EfSb9uQLSW0NC2k7nwDXJYYH476m7EhTrm++wHlW/+HGty4fCIUGKk+zPSa+KyBN+noeLCch87npzdALsRA==",
+      "dependencies": [
+        "@tiptap/core",
+        "@tiptap/pm"
+      ]
     },
     "@tiptap/extension-ordered-list@2.12.0_@tiptap+core@3.0.0__@tiptap+pm@3.0.0___prosemirror-model@1.25.1___prosemirror-state@1.4.3___prosemirror-view@1.39.2_@tiptap+pm@3.0.0__prosemirror-model@1.25.1__prosemirror-state@1.4.3__prosemirror-view@1.39.2": {
       "integrity": "sha512-1ys0e/oqk09oXxrB1WzAx5EntK/QreObG/V1yhgihGm429fxHMsxzIYN6dKAYxx0YOPQG7qEZRrrPuWU70Ms7g==",
@@ -4148,6 +4156,7 @@
         "npm:@tauri-apps/plugin-store@2.2",
         "npm:@tiptap/core@^3.0.0-beta.5",
         "npm:@tiptap/extension-highlight@^2.12.0",
+        "npm:@tiptap/extension-list@^3.0.0-beta.5",
         "npm:@tiptap/extension-placeholder@^2.12.0",
         "npm:@tiptap/extension-task-item@^2.12.0",
         "npm:@tiptap/extension-task-list@^2.12.0",

@@ -128,9 +128,6 @@
     style="position: absolute; top:{pos.y}px; left:{pos.x}px"
     class="menu bg-base-200 rounded-box w-56 z-50"
   >
-    <button onclick={() => (showEditModal = true)} class="btn btn-ghost"
-      >Edit</button
-    >
     <button onclick={() => (showDeleteModal = true)} class="btn btn-ghost"
       >Delete</button
     >
