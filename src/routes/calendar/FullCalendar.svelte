@@ -43,10 +43,20 @@
   // Options shown to user for tagging notes
   const tagOptions = ["work", "school", "personal", "urgent", "other"];
 
+  // Prompt user to pick a tag by number based off the options
+  function getTagFromPrompt(defaultTag = "other"): string {
+    const choice = prompt(
+      `Select a tag number:\n` +
+        tagOptions.map((tag, i) => `${i + 1} - ${tag}`).join("\n"),
+    );
+    const index = parseInt(choice ?? "");
+    return tagOptions[index - 1] || defaultTag;
+  }
+
   // Save current calendar events to sessionStorage for future use
   function saveEvents() {
     const events = calendar.getEvents().map((e) => ({
-      title: e.title.replace(/^🔔 /, "").replace(/ @ \d{2}:\d{2}$/, ""), // Clean up reminder icon and time for saving
+      title: e.title.replace(/^🔔 /, ""),
       start: e.startStr,
       tag: e.extendedProps.tag,
       reminder: e.extendedProps.reminder || null,
@@ -60,59 +70,49 @@
     if (!raw) return [];
     try {
       const saved = JSON.parse(raw);
-      return saved.map((e: any) => {
-        // Reconstruct title with reminder icon and time if present
-        const title = e.reminder ? `🔔 ${e.title} @ ${e.reminder}` : e.title;
-        return {
-          title: title,
-          start: e.start,
-          allDay: true, // Assuming all notes added via select are all-day unless timeGrid is used? Recheck FullCalendar select behavior. For dayGrid this is true.
-          backgroundColor: tagColors[e.tag] || tagColors.other,
-          extendedProps: {
-            tag: e.tag || "other",
-            reminder: e.reminder || null,
-          },
-        };
-      });
+      return saved.map((e: any) => ({
+        title: e.reminder ? `🔔 ${e.title}` : e.title,
+        start: e.start,
+        allDay: true,
+        backgroundColor: tagColors[e.tag] || tagColors.other,
+        extendedProps: {
+          tag: e.tag || "other",
+          reminder: e.reminder || null,
+        },
+      }));
     } catch {
       console.error("Failed to load events from sessionStorage");
       return [];
     }
   }
 
-  // Loop that checks reminders every 30 seconds in order for notification pop up to work
+  // Loop that checks reminders every 30 seconds in order for notification pop up to work and not skip
   function startReminderLoop() {
     setInterval(() => {
       const now = new Date();
       // Use ISO string for date comparison, slice to get YYYY-MM-DD
       const today = now.toISOString().split("T")[0];
-      const currentTime = now.toTimeString().slice(0, 5); // HH:MM 24-hour format
+      const currentTime = now.toTimeString().slice(0, 5); // HH:MM 24-hour format to avoid AM/PM
 
       calendar.getEvents().forEach((event) => {
-        const reminder = event.extendedProps.reminder;
-        // Get the date part of the event's start string
-        const eventDate = event.startStr.split("T")[0];
-        const cleanTitle = event.title
-          .replace(/^🔔 /, "")
-          .replace(/ @ \d{2}:\d{2}$/, ""); // Clean up icon and time for alert message
-
-        const key = `${cleanTitle}-${event.startStr}-${reminder}`; // Unique key for this reminder instance
-
-        if (
-          reminder &&
-          eventDate === today && // Check if the event is for today
-          currentTime === reminder && // Check if the current time matches the reminder time
-          !remindedSet.has(key) // Ensure we haven't already alerted for this specific reminder
-        ) {
-          remindedSet.add(key);
-          // Use a simple alert for demonstration. For Tauri, you might use native notifications.
-          alert(`⏰ Reminder: ${cleanTitle}`);
-        }
-      });
+  const reminder = event.extendedProps.reminder;
+  const cleanTitle = event.title.replace(/^🔔 /, "");
+  const key = `${cleanTitle}-${event.startStr}-${reminder}`;
+  const eventDate = event.start?.toISOString().split("T")[0];
+  if (
+    reminder &&
+    eventDate === today && // Check if the event is for today so it goes in the correct box
+    currentTime === reminder && // Check if the current time matches the reminder time
+    !remindedSet.has(key) // Ensure we haven't already alerted for this specific reminder to avoid repeating
+  ) {
+    remindedSet.add(key);
+    alert(`⏰ Reminder: ${cleanTitle}`);
+  }
+});
     }, 30000); // Check every 30 seconds
   }
 
-  // --- Modal Handlers ---
+  // --- Modal Handlers --- for mac os
 
   // Called when a tag is selected in the tag modal
   function handleTagSelected(tag: string | null) {
@@ -143,45 +143,67 @@
   }
 
   // Called when the "Add Note" button is clicked in the Add modal
-  function handleAddEvent(event: SubmitEvent) {
-    event.preventDefault(); // Prevent default form submission
+function handleAddEvent(event: SubmitEvent) {
+  event.preventDefault(); // Prevent default form submission
 
-    if (!currentSelectedInfo || !newNoteTitle.trim()) {
-      // Should not happen if modal is controlled correctly, but good check
-      alert("Please provide a note title.");
+  if (!currentSelectedInfo || !newNoteTitle.trim()) {
+    // Should not happen if modal is controlled correctly, but good check
+    alert("Please provide a note title.");
+    return;
+  }
+
+  let reminderTime: string | null = null;
+  if (wantsReminder) {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+    if (timeRegex.test(newReminderTime)) {
+      reminderTime = newReminderTime;
+    } else {
+      alert("Invalid time format. Please use HH:MM (24-hour).");
       return;
     }
-
-    let reminderTime: string | null = null;
-    if (wantsReminder) {
-      // Basic validation for HH:MM format
-      const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-      if (timeRegex.test(newReminderTime)) {
-        reminderTime = newReminderTime;
-      } else {
-        alert("Invalid time format. Please use HH:MM (24-hour).");
-        // Keep modal open
-        return;
-      }
-    }
-
-    const color = tagColors[selectedTag] || tagColors.other;
-    const title = reminderTime
-      ? `🔔 ${newNoteTitle.trim()} @ ${reminderTime}`
-      : newNoteTitle.trim();
-
-    calendar.addEvent({
-      title: title,
-      start: currentSelectedInfo.start,
-      end: currentSelectedInfo.end, // Use end from selection info (important for timeGrid)
-      allDay: currentSelectedInfo.allDay,
-      backgroundColor: color,
-      extendedProps: { tag: selectedTag, reminder: reminderTime },
-    });
-
-    saveEvents();
-    resetAddModalState(); // Clear inputs and close modal
   }
+
+  const color = tagColors[selectedTag] || tagColors.other;
+  const title = reminderTime
+    ? `🔔 ${newNoteTitle.trim()} @ ${reminderTime}`
+    : newNoteTitle.trim();
+
+  let eventStart = currentSelectedInfo.start;
+  let isAllDay = true;
+
+  if (reminderTime) {
+    const dateStr = currentSelectedInfo.start.toISOString().split("T")[0];
+    eventStart = new Date(`${dateStr}T${reminderTime}`);
+    isAllDay = false;
+  }
+
+  const eventEnd = isAllDay
+    ? currentSelectedInfo.end
+    : new Date((eventStart as Date).getTime() + 60 * 60 * 1000);
+
+  calendar.addEvent({
+  title,
+  start: eventStart,
+  end: eventEnd,
+  allDay: isAllDay,
+  backgroundColor: color,
+  display: "block",
+  extendedProps: { tag: selectedTag, reminder: reminderTime },
+});
+
+requestAnimationFrame(() => {
+  const currentView = calendar.view.type;
+  calendar.changeView("dayGridMonth");
+  requestAnimationFrame(() => {
+    calendar.changeView(currentView);
+  });
+});
+
+  saveEvents();
+  resetAddModalState(); // Clear inputs and close modal
+}
+
+
 
   // Called when the "Save Changes" button is clicked in the Edit modal
   function handleEditEvent(event: SubmitEvent) {
@@ -235,7 +257,7 @@
     newNoteTitle = "";
     wantsReminder = false;
     newReminderTime = "";
-    selectedTag = "other"; // Reset tag for next add
+    selectedTag = "other"; 
     pendingAction = null;
   }
 
@@ -245,63 +267,138 @@
     newNoteTitle = "";
     wantsReminder = false;
     newReminderTime = "";
-    selectedTag = "other"; // Reset tag state
+    selectedTag = "other"; 
     pendingAction = null;
   }
 
   function resetTagModalState() {
     showTagModal = false;
-    // Don't reset selectedTag here immediately, let the handler use it.
-    // pendingAction is reset in handleTagSelected if cancelled.
   }
 
   // Initialize calendar when component mounts
   onMount(() => {
-    calendar = new Calendar(calendarElement, {
-      plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-      initialView: "dayGridMonth", // Default view of FullCalendar: Month grid
+  calendar = new Calendar(calendarElement, {
+    plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+    initialView: "dayGridMonth", // Default view of FullCalendar is Month grid
 
-      // Toolbar at the top with view selection buttons
-      headerToolbar: {
-        left: "prev,next today",
-        center: "title",
-        right: "dayGridMonth,timeGridWeek,timeGridDay",
-      },
+    // Toolbar at the top with view selection buttons
+    headerToolbar: {
+      left: "prev,next today",
+      center: "title",
+      right: "dayGridMonth,timeGridWeek,timeGridDay",
+    },
 
-      editable: true,
-      selectable: true,
-      selectMirror: true,
+    editable: true,
+    selectable: true,
+    selectMirror: true,
 
-      events: loadEvents(), // Load events on initial render
+    // fix rendering issues across views for day and week view
+    eventDataTransform: function (eventData) {
+      return {
+        ...eventData,
+        display: "block",
+      };
+    },
 
-      // When user clicks a date or time range > initiate add note flow
-      select(info) {
-        // Store info and initiate the tag selection modal first
-        currentSelectedInfo = info;
-        pendingAction = "add";
-        selectedTag = "other"; // Default tag for new events
-        showTagModal = true; // First, ask for the tag
-        // The handleTagSelected function will open the add modal if a tag is chosen
-      },
+    events: loadEvents(), // Load events on initial render
 
-      // When user clicks an event > initiate edit/delete flow
-      eventClick(info) {
-        // Store the clicked event and populate state for the edit modal
-        currentClickedEvent = info.event;
-        newNoteTitle = info.event.title
-          .replace(/^🔔 /, "")
-          .replace(/ @ \d{2}:\d{2}$/, ""); // Clean title
-        wantsReminder = !!info.event.extendedProps.reminder;
-        newReminderTime = info.event.extendedProps.reminder || "";
-        selectedTag = info.event.extendedProps.tag || "other"; // Set initial tag for the modal
-        pendingAction = "edit"; // Set pending action in case tag modal is opened from edit
-        showEditModal = true; // Open the edit modal
-      },
-    });
+    // When user clicks a date or time range > create a note
+    select(info) {
+      const note = prompt(`Add a note for ${info.startStr.slice(0, 16)}:`);
+      if (!note) return;
 
-    calendar.render();
-    startReminderLoop(); // Start checking for reminders
+      const tag = getTagFromPrompt();
+      const color = tagColors[tag] || tagColors.other;
+
+      const wantsReminder =
+        prompt("Set a reminder? (yes/no)")?.toLowerCase() === "yes";
+      let reminder: string | null = null;
+      let eventStart = info.start;
+      let isAllDay = info.allDay;
+
+      if (wantsReminder) {
+        reminder = prompt("Enter reminder time (HH:MM, 24-hour format):") ?? null;
+
+        if (reminder) {
+          const dateStr = info.startStr.split("T")[0];
+          eventStart = new Date(`${dateStr}T${reminder}`);
+          isAllDay = false;
+        }
+      }
+
+      const eventEnd = isAllDay
+        ? info.end
+        : new Date(eventStart.getTime() + 60 * 60 * 1000);
+
+      calendar.addEvent({
+        title: reminder ? `🔔 ${note} @ ${reminder}` : note,
+        start: eventStart,
+        end: eventEnd,
+        allDay: isAllDay,
+        backgroundColor: color,
+        display: "block",
+        extendedProps: { tag, reminder },
+      });
+
+      saveEvents();
+    },
+
+    // When user clicks an event > allow editing or deleting
+    eventClick(info) {
+      const input = prompt(
+        "Edit your note below.\nTo delete this note, type DELETE NOTE exactly (case-sensitive).\n\nClick OK without changing the note to update the tag only:",
+        info.event.title.replace(/^🔔 /, "")
+      );
+      if (input === null) return;
+
+      if (input.trim() === "DELETE NOTE") {
+        info.event.remove();
+      } else {
+        const wantsReminder =
+          prompt("Update reminder? (yes/no)")?.toLowerCase() === "yes";
+        let newReminder: string | null = null;
+        let newStart: Date = new Date(info.event.start!);
+        let isAllDay = info.event.allDay;
+
+        if (wantsReminder) {
+          newReminder = prompt("Enter reminder time (HH:MM):") ?? null;
+          if (newReminder) {
+            const dateStr = info.event.startStr.split("T")[0];
+            newStart = new Date(`${dateStr}T${newReminder}`);
+            isAllDay = false;
+          }
+        }
+
+        const tag = getTagFromPrompt(info.event.extendedProps.tag || "other");
+        const color = tagColors[tag] || tagColors.other;
+        const newEnd = isAllDay
+          ? null
+          : new Date(newStart.getTime() + 60 * 60 * 1000);
+
+        info.event.setExtendedProp("tag", tag);
+        info.event.setExtendedProp("reminder", newReminder);
+        info.event.setProp("backgroundColor", color);
+        info.event.setProp("start", newStart);
+        info.event.setProp("allDay", isAllDay);
+        info.event.setProp(
+          "title",
+          newReminder ? `🔔 ${input} @ ${newReminder}` : input
+        );
+        info.event.setProp("display", "block");
+
+        if (!isAllDay) {
+          info.event.setProp("end", newEnd);
+        }
+      }
+
+      saveEvents();
+    },
   });
+
+  calendar.render();
+  startReminderLoop(); 
+});
+
 </script>
 
 <div
@@ -309,174 +406,55 @@
   bind:this={calendarElement}
 ></div>
 
-<!-- Modal for Adding Tags -->
-<dialog
-  id="tag_modal"
-  class="modal"
-  class:modal-open={showTagModal}
-  onclose={resetTagModalState}
->
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">Select a Tag</h3>
-    <p class="py-4">Choose a category for your note:</p>
-    <div class="flex flex-wrap gap-2">
-      {#each tagOptions as tag}
-        <button
-          class="btn btn-sm"
-          class:btn-primary={selectedTag === tag}
-          style:background-color={tagColors[tag]}
-          style:border-color={tagColors[tag]}
-          onclick={() => handleTagSelected(tag)}
-        >
-          {tag}
-        </button>
-      {/each}
-    </div>
-    <div class="modal-action">
-      <button class="btn" onclick={() => handleTagSelected(null)}>Cancel</button
-      >
-    </div>
-  </div>
-  <form
-    method="dialog"
-    class="modal-backdrop"
-    onclick={() => handleTagSelected(null)}
-  >
-    <button>close</button>
-  </form>
-</dialog>
+<!--"Persistance between session aka saving notes and use tauri store" -->
 
-<!-- Modal for Note Name -->
-<dialog
-  id="add_modal"
-  class="modal"
-  class:modal-open={showAddModal}
-  onclose={resetAddModalState}
->
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">Add New Note</h3>
-    <form onsubmit={handleAddEvent} class="space-y-4 mt-4">
-      <div class="form-control">
-        <label class="label" for="note-title">
-          <span class="label-text">Note Title</span>
-        </label>
-        <input
-          type="text"
-          id="note-title"
-          placeholder="Enter note title"
-          class="input input-bordered w-full"
-          bind:value={newNoteTitle}
-          required
-        />
-      </div>
+<style>
+  /* Calendar container styles */
+  .calendar-container {
+    width: 100vw;
+    max-width: 1400px;
+    height: 750px;
+    margin: auto;
+  }
 
-      <div class="form-control">
-        <label class="label cursor-pointer">
-          <span class="label-text">Set Reminder</span>
-          <input
-            type="checkbox"
-            class="toggle toggle-primary"
-            bind:checked={wantsReminder}
-          />
-        </label>
-      </div>
+  /* FullCalendar grid styling overrides */
+  :global(.fc) {
+    width: 100% !important;
+    height: 100% !important;
+  }
 
-      {#if wantsReminder}
-        <div class="form-control">
-          <label class="label" for="reminder-time">
-            <span class="label-text">Reminder Time (HH:MM)</span>
-          </label>
-          <input
-            type="time"
-            id="reminder-time"
-            class="input input-bordered w-full"
-            bind:value={newReminderTime}
-            required={wantsReminder}
-          />
-        </div>
-      {/if}
+  :global(.fc-event) {
+    font-size: 1.2rem;
+    padding: 5px;
+  }
 
-      <div class="modal-action">
-        <button type="button" class="btn" onclick={resetAddModalState}
-          >Cancel</button
-        >
-        <button type="submit" class="btn btn-primary">Add Note</button>
-      </div>
-    </form>
-  </div>
-  <form method="dialog" class="modal-backdrop" onclick={resetAddModalState}>
-    <button>close</button>
-  </form>
-</dialog>
+  /* Make timeGrid view cells taller and text more readable to avoid missing text that can't be read */
+  :global(.fc-timegrid-slot) {
+    height: 60px !important;
+  }
 
-<!-- Modal for Editing Existing Notes -->
-<dialog
-  id="edit_modal"
-  class="modal"
-  class:modal-open={showEditModal}
-  onclose={resetEditModalState}
->
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">Edit Note</h3>
-    {#if currentClickedEvent}
-      <form onsubmit={handleEditEvent} class="space-y-4 mt-4">
-        <div class="form-control">
-          <label class="label" for="edit-note-title">
-            <span class="label-text">Note Title</span>
-          </label>
-          <input
-            type="text"
-            id="edit-note-title"
-            placeholder="Enter note title"
-            class="input input-bordered w-full"
-            bind:value={newNoteTitle}
-            required
-          />
-        </div>
+  :global(.fc-timegrid-event) {
+    font-size: 1rem !important;
+    padding: 6px 8px !important;
+    line-height: 1.2;
+    white-space: normal !important;
+    overflow-wrap: break-word;
+  }
 
-        <div class="form-control">
-          <label class="label cursor-pointer">
-            <span class="label-text">Set Reminder</span>
-            <input
-              type="checkbox"
-              class="toggle toggle-primary"
-              bind:checked={wantsReminder}
-            />
-          </label>
-        </div>
+  :global(.fc-event-title) {
+    font-weight: 500;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    line-height: 1.2;
+  }
 
-        {#if wantsReminder}
-          <div class="form-control">
-            <label class="label" for="edit-reminder-time">
-              <span class="label-text">Reminder Time (HH:MM)</span>
-            </label>
-            <input
-              type="time"
-              id="edit-reminder-time"
-              class="input input-bordered w-full"
-              bind:value={newReminderTime}
-              required={wantsReminder}
-            />
-          </div>
-        {/if}
+  /* Ensure short events have visible height */
+  :global(.fc-timegrid-event-harness) {
+    min-height: 50px !important;
+  }
 
-        <div class="modal-action grid grid-cols-2 gap-4">
-          <button
-            type="button"
-            class="btn btn-error"
-            onclick={handleDeleteEvent}>Delete Note</button
-          >
-          <button type="submit" class="btn btn-primary">Save Changes</button>
-        </div>
-        <div class="modal-action justify-end">
-          <button type="button" class="btn" onclick={resetEditModalState}
-            >Cancel</button
-          >
-        </div>
-      </form>
-    {/if}
-  </div>
-  <form method="dialog" class="modal-backdrop" onclick={resetEditModalState}>
-    <button>close</button>
-  </form>
-</dialog>
+  :global(.fc-daygrid-event .fc-event-time) {
+  display: none !important;
+}
+
+</style>
